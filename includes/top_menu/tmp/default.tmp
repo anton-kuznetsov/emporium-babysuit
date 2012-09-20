@@ -1,0 +1,52 @@
+<div class="header">        
+	<div class="inner-header-container">                
+				                
+<script type="text/javascript">
+
+	var $j = jQuery.noConflict();
+    $j(document).ready( function() {
+        $j(document).magemenus({
+            mm_trigger: "ul.menu-single",
+            mm_slidedownspeed: 100,                 // Наборы сползают вниз скорость 2-го уровня выпадающего
+			mm_fadeoutspeed: 50,                    // Наборы исчезать скорость 2-го уровня выпадающего 
+			mm_css_pre: {left: 100, opacity: 0 },   // Устанавливает позицию 3-го уровня выпадающих перед видно
+			mm_animatein: {left: 165, opacity: 1},  // Определяет анимации для 3-го уровня выпадающих вступления в просмотр
+			mm_animateout: {opacity: 0, left: 185}, // Определяет анимации для 3-го уровня выпадающих выходить зрения
+			mm_animate_speed: 150,                  // Общая скорость анимации 
+			mm_pause: 0                             // Устанавливает паузу перед выпадающего меню отступает на MouseOut
+		});
+    });
+    
+</script>
+
+		<div id="box">
+			<div class="head"></div>
+		</div>
+		<ul id="magemenu-top" class="menu-single">        
+			<li class="level0 <?php echo ( $_REQUEST['t'] ? '' : 'active' ); ?>">
+				<a href="index.php">Магазин</a>
+			</li>
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'product' || $_REQUEST['t'] == 'category' ? 'active' : '' ); ?>">
+				<a href="<?php echo $site_root; ?>index.php?t=category&id_category=1"><span>Каталог</span></a>
+			</li>
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article_category' && $_REQUEST['id'] == '1' ? 'active' : '' ); ?>">
+				<a href="<?php ArticleCategory_UI::href(array('id' => 1)); ?>"><span>Статьи</span></a>
+			</li>
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article' && $_REQUEST['id'] == '3' ? 'active' : '' ); ?>">
+				<a href="<?php Article_UI::href(array('id' => 3)); ?>"><span>Доставка</span></a>
+			</li>
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article' && $_REQUEST['id'] == '4' ? 'active' : '' ); ?>">
+				<a href="<?php Article_UI::href(array('id' => 4)); ?>"><span>Оплата</span></a>
+			</li>        
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article_category' && $_REQUEST['id'] == '2' ? 'active' : '' ); ?>">
+				<a href="<?php ArticleCategory_UI::href(array('id' => 2)); ?>"><span>Скидки</span></a>
+			</li>
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article_category' && $_REQUEST['id'] == '3' ? 'active' : '' ); ?>">
+				<a href="<?php ArticleCategory_UI::href(array('id' => 3)); ?>"><span>Акции</span></a>
+			</li>
+			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article' && $_REQUEST['id'] == '9' ? 'active' : '' ); ?>">
+				<a href="<?php Article_UI::href(array('id' => 9)); ?>"><span>Контакты</span></a>
+			</li>
+		</ul>                
+	</div>    
+</div>

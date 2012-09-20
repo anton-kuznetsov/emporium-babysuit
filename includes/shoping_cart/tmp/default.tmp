@@ -1,0 +1,227 @@
+<div class="cart">
+	<!-- <div class="page-title title-buttons"> -->
+	<div class="page-title">
+		<h1><span class="color">Ваша Корзина</span></h1>
+		<!-- <ul class="checkout-types">
+			<li>
+				<button type="button" title="Оформить заказ" class="button btn-checkout" onclick="window.location='/';">
+					<span><span>Оформить заказ</span></span>
+				</button>
+			</li>
+		</ul> -->
+	</div>
+
+	<form action="<?php ShopingCart_UI::href(array( "action" => "update_post" )); ?>" method="post">
+		<fieldset>
+			<table id="shopping-cart-table" class="data-table cart-table">
+				<col width="1" />                
+				<col width="1" />                
+				<col />                                        
+				<col width="1" />                                        
+				<col width="1" />                            
+				<col width="1" />                                                     
+				<thead>
+					<tr>
+						<th rowspan="1" class="a-center">&nbsp;</th>
+						<th rowspan="1">&nbsp;</th>
+						<th rowspan="1"><span class="nobr">Наименование</span></th>
+						<th class="a-center" colspan="1"><span class="nobr">Цена</span></th>
+						<th rowspan="1" class="a-center">Кол-во</th>
+						<th class="a-center" colspan="1">Стоимость</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="50" class="a-right">
+							<button type="submit" title="Обновить" class="button btn-update">
+								<span><span>Обновить</span></span>
+							</button>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+
+<?php
+	foreach ( $data['cart_items'] as $item ) {
+?>
+
+		<tr>
+			<td class="a-center">
+				<a href="<?php ShopingCart_UI::href(array( 'action' => 'delete', 'id_item' => $item['id'] )); ?>" title="Удалить из корзины" class="btn-remove2">Удалить из корзины</a>
+			</td>
+			<td>
+				<a href="<?php Product_UI::href(array( 'id_product' => $item['id_product'] )); ?>" title="<?php echo $item['label']; ?>"><img src="<?php echo $item['href_image_50']; ?>" width="75" height="75" alt="<?php echo $item['label']; ?>" /></a>
+			</td>
+			<td>
+				<a href="<?php Product_UI::href(array( 'id_product' => $item['id_product'] )); ?>" title="<?php echo $item['label']; ?>"><b><?php echo $item['articul']; ?></b>&nbsp;<?php echo $item['label']; ?></a>
+			</td>
+			<td class="a-right">
+				<span class="cart-price"><span class="price"><?php echo $item['price_str']; ?></span></span>
+			</td>
+			<td class="a-center">
+				<input name="<?php echo 'qty_' . $item['id']; ?>" value="<?php echo $item['qty']; ?>" size="4" title="Кол-во" class="input-text qty" maxlength="12" />
+			</td>
+			<td class="a-right">
+				<span class="cart-price"><span class="price"><?php echo $item['subtotal_str']; ?></span></span>
+			</td>
+		</tr>
+
+<?php
+	}
+?>
+
+				</tbody>
+			</table>
+
+<script type="text/javascript">
+
+	decorateTable('shopping-cart-table');
+
+</script>        
+
+		</fieldset>
+	</form>
+
+	<!-- Товары, которые могут заинтересовать, на основе тех что уже есть в корзине -->
+
+	<div class="cart-collaterals">
+		<div class="col2-set">
+			<div class="col-1">
+				<div class="crosssell">
+					<h2>Вас возможно заинтересуют, следующие товары:</h2>    
+					<ul id="crosssell-products-list">            
+
+<?php
+	foreach ( $data['recomended_list'] as $item ) {
+?>
+
+		<li class="item">
+			<a class="product-image" href="<?php Product_UI::href(array( 'id_product' => $item['id'] )); ?>" title="<?php echo $item['label']; ?>"><img src="<?php echo $item['href_image_50']; ?>" width="75" height="75" alt="<?php echo $item['label']; ?>" /></a>
+			<div class="product-details">
+				<h3 class="product-name"><a href="<?php Product_UI::href(array( 'id_product' => $item['id'] )); ?>" title="<?php echo $item['label']; ?>"><?php echo $item['label']; ?></a></h3>
+				<div class="price-box">
+					<span class="regular-price" id="product-price-42"><span class="price"><?php echo $item['price_str']; ?></span></span>
+				</div>
+				<button type="button" title="В корзину" class="button btn-cart" onclick="setLocation('<?php ShopingCart_UI::href(array( 'action' => 'add', 'id_product' => $item['id'], 'qty' => 1 )); ?>')">
+					<span><span>В корзину</span></span>
+				</button>
+			</div>
+		</li>
+
+<?php
+	}
+?>
+
+					</ul>
+
+<script type="text/javascript">
+
+	decorateList ('crosssell-products-list', 'none-recursive');
+
+</script>
+
+				</div>
+			</div>
+
+			<!-- Скидки -->
+
+			<div class="col-2">
+
+				<!-- Система скидок -->
+				<!-- 
+				<form id="discount-coupon-form" action="t=cart&action=coupon_post" method="post">
+					<div class="discount">
+						<h2>Скидки</h2>
+						<div class="discount-form">
+							<label for="coupon_code">Enter your coupon code if you have one.</label>
+							<input type="hidden" name="remove" id="remove-coupone" value="0" />
+							<div class="input-box">
+								<input class="input-text" id="coupon_code" name="coupon_code" value="" />
+							</div>
+							<div class="buttons-set">
+								<button type="button" title="Apply Coupon" class="button" onclick="discountForm.submit(false)" value="Apply Coupon">
+									<span><span>Apply Coupon</span></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</form> -->
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+	/* // !!! Система скидок !!!
+	var discountForm = new VarienForm('discount-coupon-form');
+
+	discountForm.submit = function (isRemove) {
+	    if (isRemove) {
+	        $('coupon_code').removeClassName('required-entry');
+	        $('remove-coupone').value = "1";
+	    } else {
+	        $('coupon_code').addClassName('required-entry');
+	        $('remove-coupone').value = "0";
+	    }
+	    return VarienForm.prototype.submit.bind(discountForm)();
+	}
+	*/
+
+//]]>
+
+</script>                
+
+				<!-- Расчет доставки и обслуживания -->
+				<div class="shipping">
+					<h2>Стоимость доставки</h2>
+					<div class="shipping-form"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ИТОГИ -->
+
+		<div class="totals">            
+			<table id="shopping-cart-totals-table">
+				<col />
+				<col width="1" />
+				<tfoot>
+					<tr>
+						<td style="" class="a-right" colspan="1">
+							<strong>Полная стоимость</strong>
+						</td>
+						<td style="" class="a-right">
+							<strong><span class="price"><?php echo $data['total_str']; ?></span></strong>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<td style="" class="a-right" colspan="1">Стоимость товара</td>
+						<td style="" class="a-right">
+							<span class="price"><?php echo $data['subtotal_str']; ?></span>
+						</td>
+					</tr>
+					<!-- Расчет доставки и обслуживания -->
+					<!-- <tr>
+						<td style="" class="a-right" colspan="1">Доставка и обслуживание</td>
+						<td style="" class="a-right">
+							<span class="price">$5.99</span>
+						</td>
+					</tr> -->
+					<!-- Система скидок -->
+					<!-- <tr>
+						<td style="" class="a-right" colspan="1">Новогодняя скидка 10%</td>
+						<td style="" class="a-right">
+							<span class="price price-minus">- $99.99</span>
+						</td>
+					</tr> -->
+				</tbody>
+			</table>
+			<br />
+			Заказы будут приниматься<br /> с 1 августа 2012 г.
+			<button type="button" title="Оформить заказ" class="button btn-checkout" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'step1' )); ?>')"">
+				<span><span>Оформить заказ</span></span>
+			</button>
+		</div>
+	</div>
+</div>
