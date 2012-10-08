@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title><?php echo $sitename; ?></title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="Expires" content="-1">
+		<meta http-equiv="Cache-Control" content="No-Cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta name="robots" content="all">
+
+		<meta name="description" content="Карнавальные костюмы для детей">
+		<meta name="keywords" content="карнавальный костюм, карнавальные костюмы для детей">
+
+		<link rel="stylesheet" type="text/css" href="css/kinetic.css">
+		<link rel="stylesheet" type="text/css" href="css/joomla.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/typography.css"> -->
+
+		<script type="text/javascript" src="js/prototype.js"></script>
+		<script type="text/javascript" src="js/rokmage-main-js/truncate.js"></script>
+		<script type="text/javascript" src="js/rokmage-main-js/jquery.easing.1.3.js"></script>
+	</head>
+	<body class="cms-index-index">
+
+		<!-- Виджет группы в Facebook-->
+
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+		  		var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+				fjs.parentNode.insertBefore(js, fjs);
+			} (document, 'script', 'facebook-jssdk'));
+		</script>
+
+		<!-- -->
+
+		<div class="header-line">
+			<div class="header-line-menu">
+				<a href="">Меню 1</a>&nbsp;|
+				<a href="">Меню 2</a>
+			</div>
+		</div>
+
+		<div class="header-logo">
+			<div class="header-logo-img">
+				<a href="<? echo $site_root; ?>"><img src="images/sitelogo.png"></a>
+			</div>
+			<!-- <div class="header-logo-menu">
+				<a href="">Help desk</a>&nbsp;&nbsp;|&nbsp;
+				<a href="">Shipping</a>&nbsp;&nbsp;|&nbsp;
+				<a href="">Privacy</a>&nbsp;&nbsp;|&nbsp;
+				<a href="">Sitemap</a>
+			</div> -->
+			<div class="header-logo-search">
+
+				<form id="search_mini_form" action="<?php SearchResults_UI::href( ); ?>" method="post">
+				    <div class="form-search">
+				        <!-- <label for="search">Search:</label> -->
+				        <input id="search" type="text" name="q" value="" class="input-text" />
+				        <!-- <button type="submit" title="Search" class="button"><span><span>Search</span></span></button> -->
+				        <div id="search_autocomplete" class="search-autocomplete"></div>
+
+<script type="text/javascript">
+    //<![CDATA[
+        var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Поиск...');
+        searchForm.initAutocomplete('http://demo.rockettheme.com/magento/index.php/kinetic_style8/catalogsearch/ajax/suggest/', 'search_autocomplete');
+    //]]>
+</script>
+
+				    </div>
+				</form>
+			</div>
+		</div>
+
+		<div class="wrapper">
+			<div class="footer-fon">
+		
+			<div class="page-top"></div>
+			<!-- <div class="page cms-page-view"> -->
+			<div class="page">
+				<div class="header-container z2">    
+
+					<!-- Module_0 : Top Header -->
+					<? $index_module = 0; ?>
+					<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+				</div>
+				<!--  -->
+				<div class="header-container">
+				    <div class="quick-access2">
+				        <div class="inner-header-container">
+							<span class="date">
+<?php
+
+	echo $week_days_rus[date('N') - 1] . ', ' . date('j') . ' ' . $month_rus[date('n') - 1] . ' ' . date('Y');
+
+?>
+							</span>
+        
+<script type="text/javascript">
+
+	var $j = jQuery.noConflict();
+	$j('document').ready(function(){
+		fontSize(".fontResizer", ".wrapper", 10, 12, 14, "Шрифт", "KineticCookie", "A", "A");
+	});
+
+</script>
+
+							<!-- Управление размером шрифта на странице -->
+							<!-- <div class="fontResizer"></div> -->
+
+							<div class="top-links">
+								<div class="links-container">
+
+									<!-- Module_1 : Button Cart -->
+									<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+									<!--
+					                <ul class="links">
+					                    <li class="first" ><a href="http://demo.rockettheme.com/magento/index.php/kinetic_style8/customer/account/login/" title="Log In" >Вход</a></li>
+					                    <li ><a href="http://demo.rockettheme.com/magento/index.php/kinetic_style8/customer/account/create/" title="Sign Up" >Регистрация</a></li>
+					                </ul>
+					                -->
+								</div>
+							</div>
+	    				</div>
+					</div>
+				</div>
+
+				<!-- Всплывающие формы -->
+				
+<script type="text/javascript">
+
+    var $j = jQuery.noConflict();
+    $j(document).ready( function() {
+        $j('a[title=Log In]').rokmagemodal({
+			rokmagemodalcontainer: "#rokmage-login-content",
+			overlayopacity       : 0.2,
+			overlayinspeed       : 300,
+			modalpreposition     : {"top":"43%"},
+			modalpauseb4entry    : 200,
+			modalentryanimation  : {"top": "50%", "opacity": "1"},
+			modalentryspeed      : 550,
+			modalexitanimation   : {"top": "55%", "opacity": "0"},
+			modalexitspeed       : 350,
+			pauseb4overlayfadeout: 500,
+			overlayoutspeed      : 200
+		});
+    });
+
+</script>
+
+				<div id="rokmage-login-content" class="modalcontent">
+		            <form action="http://demo.rockettheme.com/magento/index.php/kinetic_style8/customer/account/loginPost/" method="post" id="login-form2">
+		                <fieldset>
+		                    <legend>Вход</legend>
+		                    <h2>Вход</h2>
+		                    <div class="rokmage-email-login-block">
+		                        <label for="email">Ваш e-mail</label>
+		                        <input name="login[username]" value="" id="email" type="text" class="input-text required-entry" title="E-mail" />
+		                    </div>
+		
+		                    <div class="rokmage-password-login-block">
+		                        <label for="pass">Пароль</label>
+		                        <input name="login[password]" type="password" class="input-text required-entry validate-password" id="pass" title="Пароль" />
+		                    </div>
+		                    <div class="clearfloat"></div>
+		
+		                    <button class="button" type="submit" name="send" id="send2"><span><span>Войти</span></span></button>
+		                    <p class="rokmage-forgot-pass"><a href="http://demo.rockettheme.com/magento/index.php/kinetic_style8/customer/account/forgotpassword/" class="f-left">Забыли свой пароль?</a></p>
+		                    <div class="clearfloat"></div>
+		                </fieldset>
+		            </form>
+    
+<script type="text/javascript">
+
+	//<![CDATA[
+    var dataForm = new VarienForm('login-form2', true);
+    //]]>
+
+</script>
+
+				</div>
+
+				<!-- Add Modals -->
+
+				<?php
+						// Здесь будут выведены все конструкции всплывающих модальных форм
+						// Кнопки и ссылки, по которым производится вызов, размещаются в своих местах
+						// как обычные модули через render() 
+				
+						foreach ($this->modules as $module) {
+							if ( $module->is_use_modal ) {
+								echo $module->render_modals();	
+							}
+						}
+				?>
+
+				<!-- End Modals -->
+
+				<div class="main-container col2-left-layout">
+
+					<!-- Product Scroller -->
+					<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+					<div class="main">
+                		<div class="col-main">
+							<div class="container">
+
+								<div class="clearfloat">
+								</div>                                                
+
+								<!-- Module_2 : ContentSlider -->
+								<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>                                                
+
+							</div>
+							<div class="col-main-end"></div>
+                		</div>
+
+						<!-- Left Column -->
+
+                		<div class="col-left sidebar">
+
+							<!-- Module_3 : Left Side Menu -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Module_4 : Left Side Menu -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Module_5 : Left Cart -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Module_6 : Left Newsletter -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Module_7 : Left Compare Products -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Виджет группы ВКонтакте -->
+
+							<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+							<div id="vk_groups"></div>
+							<script type="text/javascript">
+								VK.Widgets.Group("vk_groups", {mode: 1, width: "200", height: "290"}, 39151066);
+							</script>
+
+							<!-- Виджет группы в Facebook-->
+
+							<br />
+							<div class="fb-like-box" data-href="http://www.facebook.com/karnavalbaby" data-width="200" data-show-faces="true" data-stream="false" data-header="false"></div>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Module_8 : Footer. Последние просмотренные товары -->
+				<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+				<!-- Module_9 : Footer. Брэнды -->
+				<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+<script type="text/javascript">
+
+	var $j = jQuery.noConflict();
+	$j(document).ready(function() {
+		$j('.top-link').click(function(){
+			$j('html, body').animate({scrollTop:0}, 'fast');
+		});
+	});
+
+</script>
+
+				<div class="footer-wrapper">
+					<div class="footer">
+						<a href="javascript:void(0);" class="top-link">Вверх</a>
+
+<script type="text/javascript">
+
+	jQuery(document).ready(function(){
+		jQuery('a.footercart').rokmagemodal({ 
+			rokmagemodalcontainer: "#rokmage-header-cart",
+			overlayopacity       : 0.2,
+			overlayinspeed       : 300,
+			modalpreposition     : {"top":"43%"},
+			modalpauseb4entry    : 200,
+			modalentryanimation  : {"top": "50%", "opacity": "1"},
+			modalentryspeed      : 550,
+			modalexitanimation   : {"top": "55%", "opacity": "0"},
+			modalexitspeed       : 350,
+			pauseb4overlayfadeout: 500,
+			overlayoutspeed      : 200 
+		});
+	});
+
+</script>
+
+						<div id="rokmage-footer-lists">
+
+							<!-- Module_10 : Footer -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Module_11 : Footer -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<!-- Module_12 : Footer -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+							<div id="rokmage-footer-text">
+								<h3><span class="color">Помощь</span></h3>
+								<p>Наши консультанты ответят на все Ваши вопросы и дадут совет, на что обратить внимание при покупке.</p>
+							</div>
+						</div>
+						<div class="clearfloat"></div>
+
+						<!--  -->
+
+						<div id="footer-bottom">
+
+							<!-- Module_13 : Footer -->
+							<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
+
+						</div>
+
+						<!--  -->
+
+						<div class="footer-bottom-inner">
+							<div id="copyright"><center>&copy; 2012 Интернет-магазин BabySuit</center></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="page-end"></div>
+		</div>
+		</div>
+
+		<!-- --->
+
+		<?php echo $site_counters; ?>
+
+	</body>
+</html>
