@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	// Инициализация
 
@@ -41,13 +41,12 @@
 
 	$images = array();
 
-	$site_path = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/";
+	$site_path = $_SERVER["DOCUMENT_ROOT"];
 
 	$dir = $site_path . "upload/original/";
 	$dir_thumbs = $site_path . "upload/250x250/";
 
 	$site_url = "http://baby-suit.ru/";
-
 	$url = $site_url . "upload/original/";
 	$url_thumbs = $site_url . "upload/250x250/";
 
