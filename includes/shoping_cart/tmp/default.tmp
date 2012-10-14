@@ -85,106 +85,234 @@
 	<!-- Товары, которые могут заинтересовать, на основе тех что уже есть в корзине -->
 
 	<div class="cart-collaterals">
-		<div class="col2-set">
-
-			<!-- Скидки -->
-
-				<!-- Система скидок -->
-				<!-- 
-				<form id="discount-coupon-form" action="t=cart&action=coupon_post" method="post">
-					<div class="discount">
-						<h2>Скидки</h2>
-						<div class="discount-form">
-							<label for="coupon_code">Enter your coupon code if you have one.</label>
-							<input type="hidden" name="remove" id="remove-coupone" value="0" />
-							<div class="input-box">
-								<input class="input-text" id="coupon_code" name="coupon_code" value="" />
-							</div>
-							<div class="buttons-set">
-								<button type="button" title="Apply Coupon" class="button" onclick="discountForm.submit(false)" value="Apply Coupon">
-									<span><span>Apply Coupon</span></span>
-								</button>
-							</div>
-						</div>
-					</div>
-				</form> -->
 
 <script type="text/javascript">
 
-//<![CDATA[
+	var $j = jQuery.noConflict();
 
-	/* // !!! Система скидок !!!
-	var discountForm = new VarienForm('discount-coupon-form');
+	$j(document).ready( function() {
 
-	discountForm.submit = function (isRemove) {
-	    if (isRemove) {
-	        $('coupon_code').removeClassName('required-entry');
-	        $('remove-coupone').value = "1";
-	    } else {
-	        $('coupon_code').addClassName('required-entry');
-	        $('remove-coupone').value = "0";
-	    }
-	    return VarienForm.prototype.submit.bind(discountForm)();
-	}
-	*/
+		$j(".tab_content").hide();
+		$j("ul.tabs li:first").addClass("active");
+		$j(".tab_content:first").show();
 
-//]]>
+		$j("ul.tabs li").click(function() {
 
-</script>                
+			$j("ul.tabs li").removeClass("active");
+			$j(this).addClass("active");
+			$j(".tab_content").hide();
 
-				<!-- Расчет доставки и обслуживания -->
-				<div class="shipping">
-					<h2>Стоимость доставки</h2>
-					<div class="shipping-form"></div>
-				</div>
+			var activeTab = $j(this).find("a").attr("href");
+			$j(activeTab).fadeIn(500);
+
+			return false;
+		});
+
+		var url = location.pathname;
+
+		// Enable the reviews tab if coming from review link
+		var url = document.location.toString();
+
+		if (url.match('#reviews')) {
+
+  			$j("ul.tabs li").removeClass("active");
+			$j("ul.tabs li.reviews").addClass("active");
+			$j(".tab_content").hide();
+			$j("#reviews").show();
+			$j('html, body').animate({scrollTop: $j("#reviews").offset().top}, '1');
+
+		}
+
+		if (url.match('#review-form')) {
+
+  			$j("ul.tabs li").removeClass("active");
+			$j("ul.tabs li.reviews").addClass("active");
+			$j(".tab_content").hide();
+			$j("#reviews").show();
+			$j('html, body').animate({scrollTop: $j("#review-form").offset().top}, '1');
+
+		}
+	});
+
+</script>
+
+		<ul class="tabs">
+			<li>			
+				<a href="#russian_post">Почта России</a>
+			</li>
+			<li>
+				<a href="#ems">EMS</a>
+			</li>
+		</ul>
+		<div class="tab_container">
+			<div id="russian_post" class="description tab_content">
+				<p>Вид: ценная бандероль 1 класс.<br />Срок: от 4 до 6 рабочих 
+				дней в зависимости от региона</p>
+				<p>После отправки со склад мы отправим вам письмо с почтовым 
+				идентификатором посылки, чтобы вы смогли отслеживать 
+				отправление.</p>
+				<br />
+				<table>
+					<col />
+					<col width="100px" />
+					<tfoot>
+						<tr>
+							<td style="" class="a-right" colspan="1">
+								<strong>Полная стоимость</strong>
+							</td>
+							<td style="" class="a-right">
+								<strong><span class="price"><?php echo $data['subtotal'] + $data['shipment']['russian_post']['total']; ?> руб.</span></strong>
+							</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<td style="" class="a-right" colspan="1">Стоимость товара</td>
+							<td style="" class="a-right">
+								<span class="price"><?php echo $data['subtotal_str']; ?></span>
+							</td>
+						</tr>
+						<tr>
+							<td style="" class="a-right" colspan="1">Доставка</td>
+							<td style="" class="a-right">
+								<span class="price"><?php echo $data['shipment']['russian_post']['total_str']; ?></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br />
+				<button type="button" title="Оформить заказ" class="button btn-checkout" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'begin_step1', 'id_shipping_method' => 1 )); ?>')" >
+					<span><span>Оформить заказ</span></span>
+				</button>
+			</div>                             			
+			<div id="ems" class="additional tab_content">
+				<p>Более быстрая доставка по сравнению с Почтой России.<br />
+				Доставка осуществляется только при вашем подтверждении и ответе 
+				на звонок.</p>
+				<form action="<?php DeliveryCalc_UI::href( array( 'action' => 'calc' ) ); ?>" method="post" id="ems-calc-form"> 
+					<ul class="form-list">
+						<li>
+							<label for="select_city_field" class="required">Выберите город</label>
+							<div class="input-box">
+								<select name="select_city" id="select_city_field">';
+
+<?php
+
+	foreach ( $data['shipment']['ems']['cities'] as $city ) {
+
+?>
+
+		<option value="<?php echo $city['value']; ?>"><?php echo $city['name']; ?></option> 
+
+<?php
+
+	}		
+
+?>
+
+								</select>
+							</div>
+						</li>
+					</ul>
+					<button id="ems_calc" type="button" title="Вычислить" class="button">
+						<span><span>Вычислить</span></span>
+					</button>
+
+					<div id="ems_result">
+						<p>
+							<table>
+								<col />
+								<col width="100px" />
+								<tfoot>
+									<tr>
+										<td style="" class="a-right" colspan="1">
+											<strong>Полная стоимость</strong>
+										</td>
+										<td style="" class="a-right">
+											<strong><span id="total_str" class="price"></strong>
+										</td>
+									</tr>
+								</tfoot>
+								<tbody>
+									<tr>
+										<td style="" class="a-right" colspan="1">Стоимость товара</td>
+										<td style="" class="a-right">
+											<span id="products_cost_str" class="price"></span>
+										</td>
+									</tr>
+									<tr>
+										<td style="" class="a-right" colspan="1">Доставка</td>
+										<td style="" class="a-right">
+											<span id="shipping_cost_str" class="price"></span>
+										</td>
+									</tr>
+									<tr>
+										<td style="" class="a-right" colspan="1">Сроки</td>
+										<td style="" class="a-right">
+											<span id="term_str" class="price"></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</p>	
+						<button id="ems_checkout" type="button" title="Оформить заказ" class="button btn-checkout" >
+							<span><span>Оформить заказ</span></span>
+						</button>
+					</div>
+				</form>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('ems-calc-form', true);
+    //]]>
+
+	var $j = jQuery.noConflict();
+
+	$j('document').ready(function(){
+
+		$j("#ems_result").hide();
+
+		$j('#ems_calc').click(function(){
+
+			var ems_city = $j("#select_city_field").first().attr("value");
+
+			var ems_request = $j.ajax({
+				url: "<?php echo $site_root; ?>/includes/delivery_calc/ems_ajax.php",
+				type: "POST",
+				data: {
+					ems_city: ems_city
+				},
+				success: function (data, textStatus) {
+
+					var obj = jQuery.parseJSON(data);
+
+					if ( obj.success == "true" ) {
+
+						$j("#products_cost_str").html(obj.products_cost_str);
+						$j("#shipping_cost_str").html(obj.shipping_cost_str);
+						$j("#total_str").html(obj.total_str);
+						$j("#term_str").html(obj.term_str);
+	
+						$j("#ems_checkout").click(function(){
+							window.document.location.href = obj.url_checkout;
+						});
+	
+						$j("#ems_result").show();
+
+					} else {
+
+						$j("#ems_result").hide();
+
+					}
+    			}
+			});
+		});
+	});
+
+</script>
+
+			</div>
 		</div>
-
-		<!-- ИТОГИ -->
-
-		<div class="totals">            
-			<table id="shopping-cart-totals-table">
-				<col />
-				<col width="1" />
-				<tfoot>
-					<tr>
-						<td style="" class="a-right" colspan="1">
-							<strong>Полная стоимость</strong>
-						</td>
-						<td style="" class="a-right">
-							<strong><span class="price"><?php echo $data['total_str']; ?></span></strong>
-						</td>
-					</tr>
-				</tfoot>
-				<tbody>
-					<tr>
-						<td style="" class="a-right" colspan="1">Стоимость товара</td>
-						<td style="" class="a-right">
-							<span class="price"><?php echo $data['subtotal_str']; ?></span>
-						</td>
-					</tr>
-					<!-- Расчет доставки и обслуживания -->
-					<!-- <tr>
-						<td style="" class="a-right" colspan="1">Доставка и обслуживание</td>
-						<td style="" class="a-right">
-							<span class="price">$5.99</span>
-						</td>
-					</tr> -->
-					<!-- Система скидок -->
-					<!-- <tr>
-						<td style="" class="a-right" colspan="1">Новогодняя скидка 10%</td>
-						<td style="" class="a-right">
-							<span class="price price-minus">- $99.99</span>
-						</td>
-					</tr> -->
-				</tbody>
-			</table>
-			<button type="button" title="Оформить заказ" class="button btn-checkout" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'step1' )); ?>')"">
-				<span><span>Оформить заказ</span></span>
-			</button>
-		</div>
-
-
-
 		<div class="clearfloat"></div>
 		<div class="up-sell">
 			<h3>Вы также можете быть заинтересованы в следующих товарах</h3>

@@ -96,6 +96,46 @@
 
 	}
 
+	$__id_shipping_method = 0;
+	
+	if (isset($_REQUEST ["id_shipping_method"])) {
+
+		$__id_shipping_method = $_REQUEST ["id_shipping_method"];
+
+	}
+
+	$__id_country = 0;
+	
+	if (isset($_REQUEST ["id_country"])) {
+
+		$__id_country = $_REQUEST ["id_country"];
+
+	}
+
+	$__id_country_region = 0;
+	
+	if (isset($_REQUEST ["id_country_region"])) {
+
+		$__id_country_region = $_REQUEST ["id_country_region"];
+
+	}
+
+	$__shipping_address = '';
+	
+	if (isset($_REQUEST ["shipping_address"])) {
+
+		$__shipping_address = $_REQUEST ["shipping_address"];
+
+	}
+
+	$__shipping_params = '';
+	
+	if (isset($_REQUEST ["shipping_params"])) {
+
+		$__shipping_params = $_REQUEST ["shipping_params"];
+
+	}
+
 	$__id_cart = 0;
 
 	if (isset($_REQUEST ["id_cart"])) {
@@ -515,6 +555,11 @@
 			$p_data["action"] = $__action;
 			$p_data["id_order"] = $__id_order;
 			$p_data["id_cart"] = $__id_cart;
+			$p_data["id_shipping_method"] = $__id_shipping_method;
+			$p_data["id_country"] = $__id_country;
+			$p_data["id_country_region"] = $__id_country_region;
+			$p_data["shipping_address"] = $__shipping_address;
+			$p_data["shipping_params"] = $__shipping_params;
 			$p_data["fio"] = $__fio;
 			$p_data["email"] = $__email;
 			$p_data["phone"] = $__phone;

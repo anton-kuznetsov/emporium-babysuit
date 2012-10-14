@@ -2421,7 +2421,14 @@ ul.product-tags li { display: inline; }
 
 /* Product Info Tabs */
 .product-collateral { margin-top: 10px; }
-ul.tabs { margin: 0; padding: 0; float: left; list-style: none; height: 40px; width: 679px; }
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 40px;
+	width: 679px;
+}
 ul.tabs li { float: left; margin: 0; padding: 0; height: 40px; line-height: 40px; overflow: hidden; position: relative; }
 ul.tabs li a { text-decoration: none; display: block; font-size: 1.2em; padding: 0 18px; outline: none; }
 .tab_container { overflow: hidden; clear: both; float: left; width: 678px; margin:0 0 10px; }
