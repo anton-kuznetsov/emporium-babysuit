@@ -210,7 +210,7 @@
                 		<div class="col-main">
 							<div class="container">
 
-								<!-- Module_2 : Button Cart -->
+								<!-- Module_2 -->
 								<?php echo ( $this->modules[$index_module] ? $this->modules[$index_module]->render() : '' ); $index_module++; ?>
 
 								<div class="clearfloat">
@@ -344,7 +344,7 @@
 			<div class="page-end"></div>
 		</div>
 		</div>
-		
+
 		<!-- --->
 
 		<?php echo $site_counters; ?>

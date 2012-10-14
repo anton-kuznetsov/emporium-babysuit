@@ -1,5 +1,7 @@
 <?
 
+	require_once "Shipping.php";
+
 	require_once "_pages/Page_UI.php";
 	require_once "_pages/HomePage/HomePage_UI.php";
 	require_once "_pages/CategoryPage/CategoryPage_UI.php";
@@ -131,6 +133,7 @@
 	// Create Order
 
 	require_once "create_order/CreateOrder_BLLC.php";
+
 	require_once "create_order/CreateOrder_UI.php";
 
 	// Order

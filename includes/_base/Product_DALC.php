@@ -50,7 +50,6 @@ class Product_DALC extends DALC {
 
 		}
 
-
 		return $data;
 
 	}

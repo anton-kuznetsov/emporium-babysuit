@@ -162,18 +162,13 @@ class DALC {
 		}
 
 		$result = mysql_query( 
-
 			" SELECT " . $fields_str .
-
 			" FROM " . $table .
-
 			$where .
-
 			$order .
-
-			$limit, $this->db );
-
-
+			$limit,
+			$this->db
+		);
 
 		if (!$result) {
 
@@ -575,7 +570,7 @@ class DALC {
 
 
 
-				$sets = ( $sets == '' ? '' : ', ' ) . $field . " = '" . $item[$field] . "' ";
+				$sets .= ( $sets == '' ? '' : ', ' ) . $field . " = '" . $item[$field] . "' ";
 
 
 
@@ -584,8 +579,6 @@ class DALC {
 
 
 			if ( $sets != '' ) {
-
-
 
 				$result = mysql_query(
 

@@ -1,5 +1,9 @@
 <?php
 
+	// Utils
+	
+	require_once "Utils.php";
+
 	// BASE MODULES
 
 	require_once "_base/DALC.php";

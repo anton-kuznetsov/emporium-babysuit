@@ -258,6 +258,4 @@ class Order_DALC extends DALC {
 
 };
 
-
-
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 
 	error_reporting(E_ALL ^E_NOTICE);
 
@@ -93,6 +93,46 @@
 	if (isset($_REQUEST ["id_order"])) {
 
 		$__id_order = $_REQUEST ["id_order"];
+
+	}
+
+	$__id_shipping_method = 0;
+	
+	if (isset($_REQUEST ["id_shipping_method"])) {
+
+		$__id_shipping_method = $_REQUEST ["id_shipping_method"];
+
+	}
+
+	$__id_country = 0;
+	
+	if (isset($_REQUEST ["id_country"])) {
+
+		$__id_country = $_REQUEST ["id_country"];
+
+	}
+
+	$__id_country_region = 0;
+	
+	if (isset($_REQUEST ["id_country_region"])) {
+
+		$__id_country_region = $_REQUEST ["id_country_region"];
+
+	}
+
+	$__shipping_address = '';
+	
+	if (isset($_REQUEST ["shipping_address"])) {
+
+		$__shipping_address = $_REQUEST ["shipping_address"];
+
+	}
+
+	$__shipping_params = '';
+	
+	if (isset($_REQUEST ["shipping_params"])) {
+
+		$__shipping_params = $_REQUEST ["shipping_params"];
 
 	}
 
@@ -543,6 +583,11 @@
 			$p_data["action"] = $__action;
 			$p_data["id_order"] = $__id_order;
 			$p_data["id_cart"] = $__id_cart;
+			$p_data["id_shipping_method"] = $__id_shipping_method;
+			$p_data["id_country"] = $__id_country;
+			$p_data["id_country_region"] = $__id_country_region;
+			$p_data["shipping_address"] = $__shipping_address;
+			$p_data["shipping_params"] = $__shipping_params;
 			$p_data["fio"] = $__fio;
 			$p_data["email"] = $__email;
 			$p_data["phone"] = $__phone;
@@ -633,29 +678,29 @@
 			//
 
 			$modules = array (
-				new TopMenu_UI(),               //
-				new ModalCart_UI(),				//
-				new ProductScroller_UI(),       //
+				new TopMenu_UI(),               // Верхнее меню
+				new ModalCart_UI(),				// Ссылка и модальная форма Корзины
+				new ProductScroller_UI(),       // Прокрутка "Карусель" товаров
 				// Content
 				new DeliveryCalc_UI( $p_data ),  //
-				// 
-				null, //new BrandSideMenu_UI(),         //
-				null, //new AccessoriesSideMenu_UI(),	//
-				new ColumnCart_UI(),            //
-				null, //new Newsletter_UI(),            //
-				null, //new ColumnCompareProducts_UI(), //
-				//
-				new ProductFooterViewed_UI(),   // 
-				null, //new BrandFooterViewed_UI(),     //
-				//
-				new NewFooterList_UI(),         //
-				new BestsellerFooterList_UI(),  //
-				new PopularFooterList_UI(),     //
-				//
+				// Левая колонка
+				null, //new BrandSideMenu_UI(),         // Меню по брендам
+				null, //new AccessoriesSideMenu_UI(),	// Меню по аксессуарам
+				new ColumnCart_UI(),            // Мини-таблица "Корзина"
+				null, //new Newsletter_UI(),            // Регистрация на рассылку новостей по электронной почте
+				null, //new ColumnCompareProducts_UI(), // Мини-таблица "Сравнение товаров"
+				// Подвал № 1
+				new ProductFooterViewed_UI(),   // Последние просмотренные товары 
+				null, //new BrandFooterViewed_UI(),     // Брэнды
+				// Подвал № 2
+				new NewFooterList_UI(),         // Список "Новинки" (по дате публикации в магазине)
+				new BestsellerFooterList_UI(),  // Список "Самые покупаемые товары"
+				new PopularFooterList_UI(),     // Список "Самые популярные товары"
+				// Подвальное меню
 				new FooterMenu_UI()             // 
 			);
 
-			//	
+			// Генератор страницы	
 			$page = new DeliveryCalcPage_UI($modules, $p_data);
 
 			//

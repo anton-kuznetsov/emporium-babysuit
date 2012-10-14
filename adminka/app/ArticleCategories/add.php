@@ -4,15 +4,7 @@
 
 	require_once "../classes.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
 	//
-
-	$item = array();
 
 	require('./request.php');
 
@@ -20,69 +12,38 @@
 
 	//
 
-	$item['label'] = '';
-
-	if (isset($_REQUEST['label'])) {
-
-		$item['label'] = $_REQUEST['label'];
-
-	} else {
-
-		if (isset($request->params->label)) {
-
-			$item['label'] = $request->params->label;
-
-		}
-	}
-
-	$item['label'] = addslashes($item['label']);
+	$item = Utils::GetRequestParamList (
+		array (
+			array ( 'name' => 'label',      'type' => 'string' ),
+			array ( 'name' => 'link_label', 'type' => 'string' ),
+			array ( 'name' => 'parent',     'type' => 'int'    ),
+		),
+		$request
+	);
 
 	//
 
-	$item['link_label'] = '';
+	$article_category_dalc = new ArticleCategory_DALC();
 
-	if (isset($_REQUEST['link_label'])) {
+	$parent = $article_category_dalc->GetArticleCategory($item['parent']);
 
-		$item['link_label'] = $_REQUEST['link_label'];
+	$item['level'] = 1;
 
-	} else {
+	if (isset($parent)) {
 
-		if (isset($request->params->link_label)) {
+		$item['level'] = $parent['level'] + 1;
 
-			$item['link_label'] = $request->params->link_label;
-
-		}
-	}
-
-	$item['link_label'] = addslashes($item['link_label']);
-
-	//
-
-	$item['parent'] = 0;
-
-	if (isset($_REQUEST['parent'])) {
-
-		$item['parent'] = $_REQUEST['parent'];
-
-	} else {
-
-		if (isset($request->params->parent)) {
-
-			$item['parent'] = $request->params->parent;
-
-		}
 	}
 
 	//
 
-	$dalc = new DALC();
-
-	$article_category = $dalc->SQL_CreateItem(
+	$article_category = $article_category_dalc->SQL_CreateItem(
 		'article_categories',
 		array(
 			'label'      => $item['label'],
 			'link_label' => $item['link_label'],
-			'parent'     => $item['parent']
+			'parent'     => $item['parent'],
+			'level'      => $item['level'],
 		)
 	);
 

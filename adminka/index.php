@@ -17,7 +17,7 @@
 
 		<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
 
-		<link rel="stylesheet" type="text/css" href="resources/css/style_1.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
     	<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
     	

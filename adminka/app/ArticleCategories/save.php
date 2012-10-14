@@ -12,92 +12,42 @@
 
 	//
 
-	$item = array();
-
 	require('./request.php');
 
 	$request = new Request(array('restful' => true));
 
 	//
 
-	$item['id'] = 0;
+	$item = Utils::GetRequestParamList (
+		array (
+			array ( 'name' => 'id',         'type' => 'int'    ),
+			array ( 'name' => 'label',      'type' => 'string' ),
+			array ( 'name' => 'link_label', 'type' => 'string' ),
+			array ( 'name' => 'parent',     'type' => 'int'    ),
+		),
+		$request
+	);
 
-	if (isset($_REQUEST['id'])) {
+	//
 
-		$item['id'] = $_REQUEST['id'];
+	$article_category_dalc = new ArticleCategory_DALC();
 
-	} else {
+	$parent = $article_category_dalc->GetArticleCategory($item['parent']);
 
-		if (isset($request->params->id)) {
+	$item['level'] = 1;
 
-			$item['id'] = $request->params->id;
+	if (isset($parent)) {
 
-		}
+		$item['level'] = $parent['level'] + 1;
+
 	}
 
 	//
 
-	$item['label'] = '';
-
-	if (isset($_REQUEST['label'])) {
-
-		$item['label'] = $_REQUEST['label'];
-
-	} else {
-
-		if (isset($request->params->label)) {
-
-			$item['label'] = $request->params->label;
-
-		}
-	}
-
-	$item['label'] = addslashes($item['label']);
-
-	//
-
-	$item['link_label'] = '';
-
-	if (isset($_REQUEST['link_label'])) {
-
-		$item['link_label'] = $_REQUEST['link_label'];
-
-	} else {
-
-		if (isset($request->params->link_label)) {
-
-			$item['link_label'] = $request->params->link_label;
-
-		}
-	}
-
-	$item['link_label'] = addslashes($item['link_label']);
-
-	//
-
-	$item['parent'] = 0;
-
-	if (isset($_REQUEST['parent'])) {
-
-		$item['parent'] = $_REQUEST['parent'];
-
-	} else {
-
-		if (isset($request->params->parent)) {
-
-			$item['parent'] = $request->params->parent;
-
-		}
-	}
-
-	//
-
-	$dalc = new DALC();
-
-	$dalc->SQL_UpdateItems(
+	$article_category_dalc->SQL_UpdateItems(
 		'article_categories',
 		array( $item ),
-		array( 'label', 'link_label', 'parent' )
+		array( 'label', 'link_label', 'level', 'parent' )
 	);
 
 	echo json_encode(Array(
