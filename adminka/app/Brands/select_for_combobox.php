@@ -2,24 +2,13 @@
 
 	// Инициализация
 
-	require_once "../_base/DALC.php";
-	require_once "../_base/Brand_DALC.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('../request.php');
-
-	$request = new Request(array('restful' => true));
+	require_once "../var.php";
+	require_once "../classes.php";
+	require_once "../request.php";
 
 	//
 
 	$where = '';
-
-	//
 
 	$brand_dalc = new Brand_DALC();
 
@@ -34,7 +23,7 @@
 	array_push(
 		$array,
 		array(
-			"id" => 0,
+			"id"    => 0,
 			"label" => 'Выберите бренд...'
 		)
 	);
@@ -52,7 +41,7 @@
 
 	echo json_encode(Array(
 	    "totalCount" => $brands_qty,
-	    "items"  => $array
+	    "items"      => $array
 	));
 
 ?>

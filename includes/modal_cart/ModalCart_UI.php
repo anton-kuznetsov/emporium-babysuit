@@ -3,12 +3,14 @@
 class ModalCart_UI {
 
 	protected $folder_class = '';
-
 	protected $slider       = NULL;
 
 	// ¬ модуле примен€етс€ вывод модальных форм
 
 	public $is_use_modal = 1;
+
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -18,6 +20,7 @@ class ModalCart_UI {
 
 	}
 
+	//--------------------------------------------------------------------------
 	//
 
 	public function render() {

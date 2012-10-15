@@ -2,6 +2,9 @@
 
 class AccessoriesSideMenu_UI extends SideMenu_UI {
 
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct() {
 
 		global $folder_root;
@@ -12,7 +15,10 @@ class AccessoriesSideMenu_UI extends SideMenu_UI {
 
 	}
 
-	public function render($data = null) {
+	//--------------------------------------------------------------------------
+	//
+
+	public function render() {
 
 		$accessories_side_menu_bllc = new AccessoriesSideMenu_BLLC();
 

@@ -2,11 +2,12 @@
 
 class ShopingCart_UI extends UI {
 
-	protected $folder_class = '';
-
-	protected $slider = NULL;
-
+	protected $folder_class     = '';
+	protected $slider           = NULL;
 	protected $href_cart_params = NULL;
+
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -25,6 +26,9 @@ class ShopingCart_UI extends UI {
 		);
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

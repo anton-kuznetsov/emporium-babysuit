@@ -65,5 +65,7 @@
 				</tr>
 			</tbody>
 		</table>
+		<br />
+		<button class="button f-left" onclick="setLocation('<?php SendMessage_UI::href(array( 'action' => 'step1' )); ?>')"><span><span>Отправить сообщение</span></span></button>
 	</div>
 </div>

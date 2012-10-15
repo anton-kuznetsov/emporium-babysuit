@@ -317,32 +317,6 @@ ul#magemenu-top a { color:#5E8080; }
 ul#magemenu-top li.active a { background: url(http://demo.rockettheme.com/magento/skin/frontend/kinetic/style8/images/menutab-active-l.png) no-repeat 0 0; }
 ul#magemenu-top li.active { background: url(http://demo.rockettheme.com/magento/skin/frontend/kinetic/style8/images/menutab-active-r.png) no-repeat 100% 0; }
 ul#magemenu-top li ul li a { color: #5E8080; background: url(http://demo.rockettheme.com/magento/skin/frontend/kinetic/style8/images/drop-arrow.png) no-repeat 10px 11px !important;  }
+
 /* Active States */
 ul#magemenu-top li ul li a:hover, ul#magemenu-top li ul li.active a { background: url(http://demo.rockettheme.com/magento/skin/frontend/kinetic/style8/images/drop-arrow.png) no-repeat 10px -19px !important; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

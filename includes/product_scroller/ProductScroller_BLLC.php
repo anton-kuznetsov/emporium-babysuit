@@ -5,7 +5,7 @@ class ProductScroller_BLLC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	// Конструктор
+	//
 
 	function __construct() {
 

@@ -3,8 +3,10 @@
 class PopularFooterList_UI {
 
 	protected $folder_class = '';
+	protected $slider       = NULL;
 
-	protected $slider = NULL;
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -13,6 +15,9 @@ class PopularFooterList_UI {
 		$this->folder_class = $folder_root . '/includes/popular_footer_list/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

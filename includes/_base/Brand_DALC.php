@@ -35,67 +35,35 @@ class Brand_DALC extends DALC {
 
 	public function GetRecomendedProducts( $id_brand, $qty = 4 ) {
 
-
-
 		global $site_root;
-
-
 
 		$items = $this->SQL_SelectList('brand_recomended_products', NULL, ' id_brand = ' . $id_brand );
 
-
-
 		$ids = '-1';
-
-
 
 		shuffle($items); // Перемешиваю массив в случайном порядке
 
-
-
 		$i = 0;
-
-
 
 		foreach ($items as $item) {
 
-
-
 			$ids .= ', ' . $item['id_product'];
-
-
 
 			if ( ++$i == $qty ) break;
 
-
-
 		}
-
-
 
 		//
 
-
-
 		$product_dalc = new Product_DALC();
-
-
 
 		$products = $product_dalc->GetItemsByIds($ids);
 
-
-
 		// Валюта
-
-
 
 		$currency_dalc = new Currency_DALC();
 
-
-
 		$currencies = $currency_dalc->GetItems();
-
-
 
 		// Используя формат представления цены, выполняется
 		// формирование строки для показа цены на странице.
@@ -120,7 +88,5 @@ class Brand_DALC extends DALC {
 
 	}
 };
-
-
 
 ?>

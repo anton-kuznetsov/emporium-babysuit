@@ -2,13 +2,13 @@
 
 class Brand_UI extends UI {
 
-	protected $folder_class = '';
-
-	protected $slider = NULL;
-
-	protected $data = array();
-	
+	protected $folder_class      = '';
+	protected $slider            = NULL;
+	protected $data              = array();
 	protected $href_brand_params = NULL;
+
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct( $data = array() ) {
 

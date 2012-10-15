@@ -16,26 +16,42 @@
 		<strong><span><span class="color">Машинки<span></span></strong>
 	</div>
 	<div class="block-content">
+
 <?php
+
 	foreach ( $data as $category ) {
+
 ?>
+
 		<?php echo $category['title']; ?>
 		<div class="mageside-menu-toggle-button"></div>
 		<div class="mageside-menu-toggle-container">
 			<ul>
+
 <?php
+
 		foreach ( $category['items'] as $brand ) {
+
 ?>
+
 				<li>
 					<?php echo $brand; ?>
 				</li>
+
 <?php
+
 		}
+
 ?>
+
 			</ul>
 		</div>
+
 <?php
+
 	}
+
 ?>
+
 	</div>
 </div>

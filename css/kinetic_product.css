@@ -756,7 +756,12 @@ REMOVED - Replaced by CategoryView
 /* Add to Cart */
 .add-to-cart label { float:left; margin-right:5px; }
 .add-to-cart .qty { float:left; }
-.add-to-cart button.button { float:left; margin-left:5px; }
+
+.add-to-cart button.button {
+	float:left;
+	/*margin-left:5px;*/
+	margin-top:5px;
+}
 
 /* Add to Links + Add to Cart */
 .add-to-box {}
@@ -2514,4 +2519,15 @@ p.upsell-box-product-desc { margin-top: 8px; padding-bottom: 0; }
 	color: white;
 	font-family: Tahoma; 
 	font-size: 12px; 
+}
+
+/*****/
+
+.add-to-cart .table-box {
+	padding: 15px 0 5px 0;
+	width: 100%;
+}
+
+.add-to-cart .qty-box {
+	padding: 0 0 15px 0;
 }

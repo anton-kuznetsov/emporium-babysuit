@@ -2,95 +2,23 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+	require_once "../request.php";
 
 	//
-
-	$item = array();
-
-	require('./request.php');
 
 	$request = new Request(array('restful' => true));
 
-	//
-
-	$item['fio'] = '';
-
-	if (isset($_REQUEST['fio'])) {
-
-		$item['fio'] = $_REQUEST['fio'];
-
-	} else {
-
-		if (isset($request->params->fio)) {
-
-			$item['fio'] = $request->params->fio;
-
-		}
-	}
-
-	$item['fio'] = addslashes($item['fio']);
-
-	//
-
-	$item['email'] = '';
-
-	if (isset($_REQUEST['email'])) {
-
-		$item['email'] = $_REQUEST['email'];
-
-	} else {
-
-		if (isset($request->params->email)) {
-
-			$item['email'] = $request->params->email;
-
-		}
-	}
-
-	$item['email'] = addslashes($item['email']);
-
-	//
-
-	$item['phone'] = '';
-
-	if (isset($_REQUEST['phone'])) {
-
-		$item['phone'] = $_REQUEST['phone'];
-
-	} else {
-
-		if (isset($request->params->phone)) {
-
-			$item['phone'] = $request->params->phone;
-
-		}
-	}
-
-	$item['phone'] = addslashes($item['phone']);
-
-	//
-
-	$item['dt'] = '';
-
-	if (isset($_REQUEST['dt'])) {
-
-		$item['dt'] = $_REQUEST['dt'];
-
-	} else {
-
-		if (isset($request->params->dt)) {
-
-			$item['dt'] = $request->params->dt;
-
-		}
-	}
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'fio',   'type' => 'string' ),
+			array( 'name' => 'email', 'type' => 'string' ),
+			array( 'name' => 'phone', 'type' => 'string' ),
+			array( 'name' => 'dt',    'type' => 'string' ),
+		),
+		$request
+	);
 
 	// Преобразование даты
 

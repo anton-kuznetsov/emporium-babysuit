@@ -2,13 +2,13 @@
 
 class Product_UI extends UI {
 
-	protected $folder_class = '';
-
-	protected $slider = NULL;
-
-	protected $data = array();
-	
+	protected $folder_class        = '';
+	protected $slider              = NULL;
+	protected $data                = array();
 	protected $href_product_params = NULL;
+
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct( $data = array() ) {
 

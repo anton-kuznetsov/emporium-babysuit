@@ -5,7 +5,7 @@ class FeaturedProducts_BLLC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	// Конструктор
+	//
 
 	function __construct() {
 
@@ -16,7 +16,7 @@ class FeaturedProducts_BLLC {
 	}
 
 	//--------------------------------------------------------------------------
-	// 
+	//
 
 	public function GetItems() {
 

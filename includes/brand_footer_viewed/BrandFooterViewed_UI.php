@@ -2,6 +2,9 @@
 
 class BrandFooterViewed_UI extends FooterViewed_UI {
 
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct() {
 
 		global $folder_root;
@@ -13,6 +16,9 @@ class BrandFooterViewed_UI extends FooterViewed_UI {
 		$this->title = '<span><span class="color">Бренды</span></span>';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

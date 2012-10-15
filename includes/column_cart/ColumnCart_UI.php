@@ -3,8 +3,10 @@
 class ColumnCart_UI {
 
 	protected $folder_class = '';
+	protected $slider       = NULL;
 
-	protected $slider = NULL;
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -13,6 +15,9 @@ class ColumnCart_UI {
 		$this->folder_class = $folder_root . '/includes/column_cart/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 
@@ -30,6 +35,7 @@ class ColumnCart_UI {
 
 		}
 	}
+
 };
 
 ?>

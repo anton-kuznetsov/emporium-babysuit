@@ -40,33 +40,37 @@
 
 </script>
 
-					<div id="dynatip">&nbsp;</div>
-					<div class="scrollable-container smallerize">
-					    <a class="prevPage"></a>
-					    <div class="scrollable">
-					        <div class="items">
+<div id="dynatip">&nbsp;</div>
+<div class="scrollable-container smallerize">
+    <a class="prevPage"></a>
+    <div class="scrollable">
+        <div class="items">
+
 <?php
 
 	foreach ($data as $item) {
 
 ?>
-		<div class="scroll-item-middle">
-			<div class="scroll-item-top">
-				<div class="scroll-item-bottom">
-					<a href="<?php Product_UI::href(array( 'id_product' => $item['product']['id'] )); ?>" class="product-image">
-						<img src="<?php echo $item['product']['href_image_90']; ?>" class="tooltipped" alt="<?php echo $item['product']['label']; ?>" />
-						<span class="round-m" title="<?php echo $item['product']['label']; ?>&lt;br/&gt;&lt;strong&gt;&lt;span class=&quot;price&quot;&gt;<?php echo $item['product']['price_str']; ?>&lt;/span&gt;&lt;/strong&gt;"></span></a>
-					<div class="clearfloat"></div>
+
+			<div class="scroll-item-middle">
+				<div class="scroll-item-top">
+					<div class="scroll-item-bottom">
+						<a href="<?php Product_UI::href(array( 'id_product' => $item['product']['id'] )); ?>" class="product-image">
+							<img src="<?php echo $item['product']['href_image_90']; ?>" class="tooltipped" alt="<?php echo $item['product']['label']; ?>" />
+							<span class="round-m" title="<?php echo $item['product']['label']; ?>&lt;br/&gt;&lt;strong&gt;&lt;span class=&quot;price&quot;&gt;<?php echo $item['product']['price_str']; ?>&lt;/span&gt;&lt;/strong&gt;"></span></a>
+						<div class="clearfloat"></div>
+					</div>
 				</div>
 			</div>
-		</div>
+
 <?php
 
 	}
 
 ?>
-							</div>
-						</div>
-						<a class="nextPage"></a>
-						<div class="clearfloat"></div>
-					</div>
+
+		</div>
+	</div>
+	<a class="nextPage"></a>
+	<div class="clearfloat"></div>
+</div>

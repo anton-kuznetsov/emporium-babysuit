@@ -43,7 +43,7 @@ class BrandFooterViewed_DALC extends DALC {
 		foreach ($items as $item) {
 
 			$items[$item['id']]['label_brand'] = $brand_items[$item['id_brand']]['label'];
-			
+
 			$items[$item['id']]['href_image_50_gray']  = $site_root . '/upload/50x50/' . $brand_items[$item['id_brand']]['href_image_50_gray'];
 
 		}
@@ -53,7 +53,6 @@ class BrandFooterViewed_DALC extends DALC {
 		return $items;
 
 	}
-
 };
 
 ?>

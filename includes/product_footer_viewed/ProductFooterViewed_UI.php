@@ -2,6 +2,9 @@
 
 class ProductFooterViewed_UI extends FooterViewed_UI {
 
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct() {
 
 		global $folder_root;
@@ -13,6 +16,9 @@ class ProductFooterViewed_UI extends FooterViewed_UI {
 		$this->title = '<span><span class="color">Последние</span> просмотренные товары</span>';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

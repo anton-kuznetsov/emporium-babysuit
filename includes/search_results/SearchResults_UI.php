@@ -3,10 +3,11 @@
 class SearchResults_UI extends UI {
 
 	protected $folder_class = '';
+	protected $slider       = NULL;
+	protected $data         = array();
 
-	protected $slider = NULL;
-
-	protected $data = array();
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct( $data = array() ) {
 

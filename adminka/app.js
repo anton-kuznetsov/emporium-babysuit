@@ -1,6 +1,4 @@
-
 // Ext.Loader.setConfig({enabled:true});
-
 // Подгружаю классы, которые буду использовать
 
 Ext.require('Ext.container.Viewport');
@@ -8,8 +6,8 @@ Ext.require('Ext.container.Viewport');
 // Приложение
 
 Ext.application({
-	name: 'Baby-Suit.Ru :: Управление данными',
-	launch: function() {
+	name   : ADMINKA_PAGE_TITLE,
+	launch : function() {
 
 //**************************************************************************************************
 // Дерево навигации (menu_tree.js)
@@ -21,8 +19,8 @@ Ext.application({
 
     	Ext.create('Ext.Viewport', {
 	        layout: {
-	            type: 'border',
-	            padding: 5
+	            type    : 'border',
+	            padding : 5
 	        },
 	        items: [
 
@@ -33,12 +31,12 @@ Ext.application({
 				// Центр
 
 				{
-					xtype: 'panel',
-					id: 'frame_panel',
-					itemId: 'frame_panel',
-					region: 'center',
-					padding: '0 0 0 5px',
-					border: false
+					xtype   : 'panel',
+					id      : 'frame_panel',
+					itemId  : 'frame_panel',
+					region  : 'center',
+					padding : '0 0 0 5px',
+					border  : false
 				},
 			]
 	    });

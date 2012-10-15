@@ -3,8 +3,10 @@
 class ProductScroller_UI {
 
 	protected $folder_class = '';
+	protected $slider       = NULL;
 
-	protected $slider = NULL;
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -13,6 +15,9 @@ class ProductScroller_UI {
 		$this->folder_class = $folder_root . '/includes/product_scroller/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

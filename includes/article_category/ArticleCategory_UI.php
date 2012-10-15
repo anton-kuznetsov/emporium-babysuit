@@ -3,9 +3,11 @@
 class ArticleCategory_UI extends UI {
 
 	protected $folder_class = '';
+	protected $data         = array();
 
-	protected $data = array();
-	
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct( $data = array() ) {
 
 		global $folder_root;

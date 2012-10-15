@@ -38,9 +38,6 @@
 			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article' && $_REQUEST['id'] == '4' ? 'active' : '' ); ?>">
 				<a href="<?php Article_UI::href(array('id' => 4)); ?>"><span>Оплата</span></a>
 			</li>        
-			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article_category' && $_REQUEST['id'] == '2' ? 'active' : '' ); ?>">
-				<a href="<?php ArticleCategory_UI::href(array('id' => 2)); ?>"><span>Скидки</span></a>
-			</li>
 			<li class="level0 <?php echo ( $_REQUEST['t'] == 'article_category' && $_REQUEST['id'] == '3' ? 'active' : '' ); ?>">
 				<a href="<?php ArticleCategory_UI::href(array('id' => 3)); ?>"><span>Акции</span></a>
 			</li>

@@ -72,6 +72,14 @@
 
 	}
 
+	$__size = '';
+
+	if (isset($_REQUEST ["size"])) {
+
+		$__size = $_REQUEST ["size"];
+
+	}
+
 	$__id_brand = 0;
 
 	if (isset($_REQUEST ["id_brand"])) {
@@ -168,6 +176,38 @@
 
 	}
 
+	$__select_city = '';
+
+	if (isset($_REQUEST ["select_city"])) {
+
+		$__select_city = $_REQUEST ["select_city"];
+
+	}
+
+	$__weight = '';
+
+	if (isset($_REQUEST ["weight"])) {
+
+		$__weight = $_REQUEST ["weight"];
+
+	}
+
+	$__subject = ''; 
+
+	if (isset($_REQUEST ["subject"])) {
+
+		$__subject = $_REQUEST ["subject"];
+
+	}
+
+	$__text = '';
+
+	if (isset($_REQUEST ["text"])) {
+
+		$__text = $_REQUEST ["text"];
+
+	}
+
 	$page = NULL;
 
 	switch ($__page_type) {
@@ -209,6 +249,7 @@
 
 			$bc_data = array();
 			$bc_data["id_category"] = $__id_category;
+			$bc_data["page_type"] = $__page_type;
 
 			//
 			$cp_data = array();
@@ -247,7 +288,7 @@
 			);
 
 			// Генератор страницы	
-			$page = new CategoryPage_UI($modules);
+			$page = new CategoryPage_UI($modules, $bc_data);
 
 			break;
 
@@ -333,6 +374,7 @@
 
 			$a_data = array();
 			$a_data["id_article"] = $__id;
+			$a_data["page_type"] = $__page_type;
 
 			// Список подключаемых к странице модулей
 
@@ -363,13 +405,14 @@
 			);
 
 			// Генератор страницы	
-			$page = new CategoryPage_UI($modules, null);
+			$page = new CategoryPage_UI($modules, $a_data);
 			break;
 
 		case 'article_category':
 
 			$ac_data = array();
 			$ac_data["id_article_category"] = $__id;
+			$ac_data["page_type"] = $__page_type;
 
 			// Список подключаемых к странице модулей
 
@@ -400,7 +443,7 @@
 			);
 
 			// Генератор страницы	
-			$page = new CategoryPage_UI($modules, null);
+			$page = new CategoryPage_UI($modules, $ac_data);
 			break;
 
 		case 'page':
@@ -520,6 +563,7 @@
 			$cp_data["id_product"] = $__id_product;
 			$cp_data["id_item"] = $__id_item;
 			$cp_data["qty"] = $__qty;
+			$cp_data["size"] = $__size;
 
 			//
 
@@ -547,6 +591,92 @@
 
 			// Генератор страницы
 			$page = new CartPage_UI($modules, $cp_data);
+
+			//
+			$page->action();
+
+			//
+			break;
+
+		case 'delivery_calc':
+
+			$p_data = array();
+			$p_data["action"] = $__action;
+			$p_data["select_city"] = $__select_city;
+			$p_data["weight"] = $__weight;
+
+			//
+
+			$modules = array (
+				new TopMenu_UI(),
+				new ModalCart_UI(),
+				new ProductScroller_UI(),
+				//
+				new DeliveryCalc_UI( $p_data ),
+				//
+				null, //new BrandSideMenu_UI(),
+				null, //new AccessoriesSideMenu_UI(),
+				new ColumnCart_UI(),
+				null, //new Newsletter_UI(),
+				null, //new ColumnCompareProducts_UI(),
+				//
+				new ProductFooterViewed_UI(), 
+				null, //new BrandFooterViewed_UI(),
+				//
+				new NewFooterList_UI(),
+				new BestsellerFooterList_UI(),
+				new PopularFooterList_UI(),
+				//
+				new FooterMenu_UI() 
+			);
+
+			//	
+			$page = new DeliveryCalcPage_UI($modules, $p_data);
+
+			//
+			//$page->action();
+
+			//
+			break;
+
+		case 'send_message':
+
+			$p_data = array();
+			$p_data["action"] = $__action;
+			$p_data["id"] = $__id;
+			$p_data["fio"] = $__fio;
+			$p_data["email"] = $__email;
+			$p_data["phone"] = $__phone;
+			$p_data["subject"] = $__subject;
+			$p_data["text"] = $__text;
+
+			//
+
+			$modules = array (
+				new TopMenu_UI(),
+				new ModalCart_UI(),
+				new ProductScroller_UI(),
+				//
+				new SendMessage_UI( $p_data ),
+				//
+				null, //new BrandSideMenu_UI(),
+				null, //new AccessoriesSideMenu_UI(),
+				new ColumnCart_UI(),
+				null, //new Newsletter_UI(),
+				null, //new ColumnCompareProducts_UI(),
+				//
+				new ProductFooterViewed_UI(), 
+				null, //new BrandFooterViewed_UI(),
+				//
+				new NewFooterList_UI(),
+				new BestsellerFooterList_UI(),
+				new PopularFooterList_UI(),
+				//
+				new FooterMenu_UI() 
+			);
+
+			//	
+			$page = new SendMessagePage_UI($modules, $p_data);
 
 			//
 			$page->action();

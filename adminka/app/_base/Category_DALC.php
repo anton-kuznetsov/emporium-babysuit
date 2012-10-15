@@ -231,7 +231,6 @@ class Category_DALC extends DALC {
 		return $products;
 
 	}
-
 };
 
 ?>

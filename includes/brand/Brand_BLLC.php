@@ -14,7 +14,10 @@ class Brand_BLLC {
 		$this->folder_class = $folder_root . '/includes/brand/';
 
 	}
-	
+
+	//--------------------------------------------------------------------------
+	//
+
 	public function GetData( $id_brand ) {
 
 		$data = array();
@@ -55,7 +58,6 @@ class Brand_BLLC {
 		return $data;
 
 	}
-
 };
 
 ?>

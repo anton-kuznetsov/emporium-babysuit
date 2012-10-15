@@ -202,7 +202,11 @@ class Product_DALC extends DALC {
 
 		global $site_root;
 
-		$items = $this->SQL_SelectListDistinct( 'product_relations', array ( 'id_accessory' ), " id_product IN (" . $ids_product . ") AND id_accessory NOT IN (" . $ids_product . ") " );
+		$items = $this->SQL_SelectListDistinct(
+			'product_relations',
+			array ( 'id_accessory' ),
+			" id_product IN (" . $ids_product . ") AND id_accessory NOT IN (" . $ids_product . ") "
+		);
 
 		$ids = '-1';
 

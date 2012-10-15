@@ -70,4 +70,3 @@ If you are unsure which license is appropriate for your use, please contact the 
     document.write('<script type="text/javascript" src="' + path + 'ext-all' + ((isDevelopment) ? '-debug' : '') + '.js"></script>');
 
 })();
-

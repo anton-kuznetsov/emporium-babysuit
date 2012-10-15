@@ -5,7 +5,7 @@ class CreateOrder_BLLC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	// Конструктор
+	//
 
 	function __construct() {
 

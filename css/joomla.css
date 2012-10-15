@@ -215,6 +215,5 @@ body.rtl .component-content .search_result select#ordering.inputbox {margin-righ
 body.rtl #rt-showcase .readon-wrap1 {float: right;}
 body.rtl pre {direction: ltr;text-align: right;}
 
-
 /* iPhone */
 body #gantry-viewswitcher {z-index: 100;right:50%;position:relative;top:inherit;right:inherit;margin: 1em auto;}

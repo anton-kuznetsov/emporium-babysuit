@@ -1,7 +1,6 @@
 <ul class="footermenu">
 	<li class="first"><a href="<?php Article_UI::href(array('id' => 3)); ?>">Доставка</a></li>
 	<li><a href="<?php Article_UI::href(array('id' => 4)); ?>">Оплата</a></li>
-	<li><a href="<?php ArticleCategory_UI::href(array('id' => 2)); ?>">Скидки</a></li>
 	<li><a href="<?php ArticleCategory_UI::href(array('id' => 3)); ?>">Акции</a></li>
 	<li class="last"><a href="<?php Article_UI::href(array('id' => 9)); ?>">Контакты</a></li>
 </ul>

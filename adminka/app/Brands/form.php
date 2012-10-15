@@ -2,40 +2,26 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('./request.php');
-
-	$request = new Request(array('restful' => true));
+	require_once "../request.php";
 
 	//
 
-	$id = 0;
+	$request = new Request(array('restful' => true));
 
-	if (isset($_REQUEST['id'])) {
-
-		$id = $_REQUEST['id'];
-
-	} else {
-
-		if (isset($request->params->id)) {
-
-			$id = $request->params->id;
-
-		}
-	}
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'id', 'type' => 'int' ),
+		),
+		$request
+	);
 
 	//
 
 	$brand_dalc = new Brand_DALC();
 
-	$brand = $brand_dalc->GetBrand($id);
+	$brand = $brand_dalc->GetBrand($item['id']);
 
 	echo json_encode(Array(
 		"success" => "true",

@@ -3,8 +3,10 @@
 class Newsletter_UI {
 
 	protected $folder_class = '';
+	protected $slider       = NULL;
 
-	protected $slider = NULL;
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -13,6 +15,9 @@ class Newsletter_UI {
 		$this->folder_class = $folder_root . '/includes/newsletter/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

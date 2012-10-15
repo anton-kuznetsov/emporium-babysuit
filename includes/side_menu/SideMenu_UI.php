@@ -4,6 +4,9 @@ class SideMenu_UI {
 
 	protected $folder_class = '';
 
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct() {
 
 		global $folder_root;
@@ -11,6 +14,9 @@ class SideMenu_UI {
 		$this->folder_class = $folder_root . '/includes/side_menu/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render($data) {
 

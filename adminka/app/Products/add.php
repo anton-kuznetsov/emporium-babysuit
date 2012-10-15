@@ -2,165 +2,27 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+	require_once "../request.php";
 
 	//
-
-	$item = array();
-
-	require('./request.php');
 
 	$request = new Request(array('restful' => true));
 
-	//
-
-	$item['articul'] = '';
-
-	if (isset($_REQUEST['articul'])) {
-
-		$item['articul'] = $_REQUEST['articul'];
-
-	} else {
-
-		if (isset($request->params->articul)) {
-
-			$item['articul'] = $request->params->articul;
-
-		}
-	}
-
-	$item['articul'] = addslashes($item['articul']);
-
-	//
-
-	$item['label'] = '';
-
-	if (isset($_REQUEST['label'])) {
-
-		$item['label'] = $_REQUEST['label'];
-
-	} else {
-
-		if (isset($request->params->label)) {
-
-			$item['label'] = $request->params->label;
-
-		}
-	}
-
-	$item['label'] = addslashes($item['label']);
-
-	//
-
-	$item['id_brand'] = 0;
-
-	if (isset($_REQUEST['id_brand'])) {
-
-		$item['id_brand'] = $_REQUEST['id_brand'];
-
-	} else {
-
-		if (isset($request->params->id_brand)) {
-
-			$item['id_brand'] = $request->params->id_brand;
-
-		}
-	}
-
-	//
-
-	$item['id_category'] = 0;
-
-	if (isset($_REQUEST['id_category'])) {
-
-		$item['id_category'] = $_REQUEST['id_category'];
-
-	} else {
-
-		if (isset($request->params->id_category)) {
-
-			$item['id_category'] = $request->params->id_category;
-
-		}
-	}
-
-	//
-
-	$item['price'] = 0;
-
-	if (isset($_REQUEST['price'])) {
-
-		$item['price'] = $_REQUEST['price'];
-
-	} else {
-
-		if (isset($request->params->price)) {
-
-			$item['price'] = $request->params->price;
-
-		}
-	}
-
-	//
-
-	$item['overview'] = '';
-
-	if (isset($_REQUEST['overview'])) {
-
-		$item['overview'] = $_REQUEST['overview'];
-
-	} else {
-
-		if (isset($request->params->overview)) {
-
-			$item['overview'] = $request->params->overview;
-
-		}
-	}
-
-	$item['overview'] = addslashes($item['overview']);
-
-	//
-
-	$item['description'] = '';
-
-	if (isset($_REQUEST['description'])) {
-
-		$item['description'] = $_REQUEST['description'];
-
-	} else {
-
-		if (isset($request->params->description)) {
-
-			$item['description'] = $request->params->description;
-
-		}
-	}
-
-	$item['description'] = addslashes($item['description']);
-
-	//
-
-	$item['dt'] = '';
-
-	if (isset($_REQUEST['dt'])) {
-
-		$item['dt'] = $_REQUEST['dt'];
-
-	} else {
-
-		if (isset($request->params->dt)) {
-
-			$item['dt'] = $request->params->dt;
-
-		}
-	}
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'articul',     'type' => 'string' ),
+			array( 'name' => 'label',       'type' => 'string' ),
+			array( 'name' => 'id_brand',    'type' => 'int'    ),
+			array( 'name' => 'id_category', 'type' => 'int'    ),
+			array( 'name' => 'price',       'type' => 'float'  ),
+			array( 'name' => 'overview',    'type' => 'string' ),
+			array( 'name' => 'description', 'type' => 'string' ),
+			array( 'name' => 'dt',          'type' => 'string' ),
+		),
+		$request
+	);
 
 	// Преобразование даты
 

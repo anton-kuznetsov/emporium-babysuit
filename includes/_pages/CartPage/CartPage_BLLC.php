@@ -13,10 +13,10 @@ class CartPage_BLLC {
 	//--------------------------------------------------------------------------
 	//
 
-	public function AddItem( $id_product, $qty ) {
+	public function AddItem( $id_product, $qty, $size ) {
 
 		$cart_dalc = new Cart_DALC();
-		
+
 		$cart = $cart_dalc->GetCartBySession( session_id() );
 
 		if ( is_null($cart) ) {
@@ -24,7 +24,7 @@ class CartPage_BLLC {
 			$cart = $cart_dalc->NewCart( session_id() );
 
 		}
-		
+
 		//
 
 		$shoping_cart_dalc = new ShopingCart_DALC();
@@ -34,15 +34,29 @@ class CartPage_BLLC {
 		$item = NULL;
 
 		foreach ( $cart_items as $cart_item ) {
-			if ( $cart_item['id_product'] == $id_product ) {
+
+			if (
+				$cart_item['id_product'] == $id_product &&
+				$cart_item['size'] == $size
+			) {
+
 				$item = $cart_item;
 				break;
+
 			}
 		}
 
 		if ( is_null($item) ) { 
 
-			$cart_dalc->SQL_CreateItem( 'cart_items', array( 'id_cart' => $cart['id'], 'id_product' => $id_product, 'qty' => $qty ) );
+			$cart_dalc->SQL_CreateItem(
+				'cart_items',
+				array(
+					'id_cart'    => $cart['id'],
+					'id_product' => $id_product,
+					'qty'        => $qty,
+					'size'       => $size
+				)
+			);
 
 		} else {
 
@@ -65,7 +79,7 @@ class CartPage_BLLC {
 	public function UpdateItems() {
 
 		$cart_dalc = new Cart_DALC();
-		
+
 		$cart = $cart_dalc->GetCartBySession( session_id() );
 
 		if ( is_null($cart) ) {
@@ -73,7 +87,7 @@ class CartPage_BLLC {
 			$cart = $cart_dalc->NewCart( session_id() );
 
 		}
-		
+
 		//
 
 		$items = $cart_dalc->SQL_SelectList('cart_items', NULL, ' id_cart = '.$cart['id'] );
@@ -118,6 +132,7 @@ class CartPage_BLLC {
 		exit;
 
 	}
+
 };
 
 ?>

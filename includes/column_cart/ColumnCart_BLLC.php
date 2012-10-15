@@ -15,6 +15,9 @@ class ColumnCart_BLLC {
 
 	}
 
+	//--------------------------------------------------------------------------
+	//
+
 	public function GetData() {
 
 		$data = array();
@@ -64,7 +67,6 @@ class ColumnCart_BLLC {
 		return $data;
 
 	}
-
 };
 
 ?>

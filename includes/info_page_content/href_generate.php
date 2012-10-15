@@ -47,6 +47,3 @@
 <?php $this->href(array( 'p' => 6 )); ?>
 <?php $this->href(array( 'limit' => 9 )); ?>
 <?php $this->href(array( 'order' => 'date' )); ?>
-
-
-

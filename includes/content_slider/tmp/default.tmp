@@ -9,13 +9,16 @@
 
 </script>
 
-<div id="contentslider-container">    
-	<!-- "previous slide" button -->    
-	<a class="backward">prev</a>    
-	<!-- container for the slides -->    
-	<div class="images">                                                         
+<div id="contentslider-container">
+	<!-- "previous slide" button -->
+	<a class="backward">prev</a>
+	<!-- container for the slides -->
+	<div class="images">
+
 <?php
+
 	foreach ($data as $item) {
+
 ?>
 		<div>
 			<a class="product-image" href="<?php Product_UI::href(array( 'id_product' => $item['id'] )); ?>"><img src="<?php echo $item['href_image_250']; ?>" alt="<?php echo $item['label']; ?>" /></a>
@@ -30,22 +33,34 @@
 				</button>
 			</div>
 		</div>
+
 <?php
+
 	}
+
 ?>
-	</div>    
-	<!-- "next slide" button -->    
-	<a class="forward">next</a>        
-	<!-- the tabs -->    
+
+	</div>
+	<!-- "next slide" button -->
+	<a class="forward">next</a>
+	<!-- the tabs -->
 	<div class="tabs">
+
 <?php
+
 	foreach ($data as $item) {
+
 ?>
-		<a href="#"></a>        
+
+		<a href="#"></a>
+
 <?php
+
 	}
+
 ?>
-	</div>    
+
+	</div>
 	<div class="clearfloat">
 	</div>
 </div>

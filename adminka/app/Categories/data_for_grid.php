@@ -2,13 +2,9 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+	require_once "../request.php";
 
 	//
 
@@ -18,7 +14,15 @@
 
 	$categories_qty = $category_dalc->Count();
 
-	$categories = $category_dalc->GetItemsLimit(array("label", "level", "parent"), $where, $start, $limit);
+	$categories = $category_dalc->GetItemsLimit(
+		array(
+			"label",
+			"level",
+			"parent"
+		),
+		$where,
+		$start, $limit
+	);
 
 	$array = array();
 

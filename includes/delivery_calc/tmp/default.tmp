@@ -1,0 +1,80 @@
+<div class="product-view order-view">     	
+	<div class="page-title">
+		<h1><span class="color">Калькулятор доставки EMS</span></h1>
+	</div>
+	<div id="reviews" class="tab_content">
+		<form action="<?php DeliveryCalc_UI::href( array( 'action' => 'calc' ) ); ?>" method="post" id="delivery-calc-form">
+			<div class="form-add">
+				<ul class="form-list">
+					<li>
+						<label for="select_city_field" class="required">Выберите город</label>
+						<div class="input-box">
+							<select name="select_city" id="select_city_field">';
+
+<?php
+
+	foreach ( $data["cities"] as $city ) {
+
+?>
+
+		<option value="<?php echo $city['value']; ?>"><?php echo $city['name']; ?></option> 
+
+<?php
+
+	}		
+
+?>
+
+							</select>
+						</div>
+					</li>
+					<li>
+						<label for="weight_field" class="required"><em>*</em>Вес</label>
+						<div class="input-box">
+							<input type="text" name="weight" id="weight_field" class="input-text input-text-50 required-entry validate-not-negative-number" value="<?php echo $data['weight']; ?>" />
+						</div>
+					</li>
+					<li>
+						<label>Макс. вес: <?php echo $data['max_weight']; ?></label>
+					</li>
+
+<?php
+
+	if ( $data['html_price'] ) {
+
+?>
+
+					<li>
+						<label>Стоимость: <?php echo $data['html_price']; ?></label>
+					</li>
+					<li>
+						<label>Сроки: <?php echo $data['html_term']; ?></label>
+					</li>
+
+<?php
+
+	}
+
+?>
+
+				</ul>
+			</div>
+			<div class="buttons-set">
+				<button type="submit" title="Вычислить" class="button">
+					<span><span>Вычислить</span></span>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+
+        //<![CDATA[
+
+        var dataForm = new VarienForm('delivery-calc-form', true);
+
+        //]]>
+
+    </script>     	
+
+</div>

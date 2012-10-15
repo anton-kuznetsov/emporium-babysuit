@@ -1,4 +1,3 @@
-
 /* Widgets =============================================================================== */
 .widget { display:inline; }
 .widget .widget-title { clear:both; padding:15px 0 0; margin:0 0 7px; }
@@ -250,9 +249,18 @@ p.control input.radio { margin-right:6px; }
 .form-list li.control .input-box { clear:none; display:inline; width:auto; }
 /*.form-list li.fields { margin-right:-15px; }*/
 .form-list .input-box { display:block; clear:both; width:260px; }
+.form-list .input-box-100prc { display:block; clear:both; width:700px; }
+
 .form-list .field { float:left; width:275px; }
 .form-list input.input-text { width:254px; }
+
+.form-list input.input-text-100prc { width:688px; }
+.form-list input.input-text-50 { width:50px; }
+
 .form-list textarea { width:254px; height:10em; }
+
+.form-list textarea.input-textarea-100prc { width:688px; height:10em; }
+
 .form-list select { width:260px; }
 .form-list li.wide .input-box { width:535px; }
 .form-list li.wide input.input-text { width:529px; }
@@ -1794,7 +1802,9 @@ ul.tabs li.active {
 #customer-reviews .pager { border:1px solid #ccc; background-color:#F2F2F2; }
 
 .product-view .up-sell h3,
+.cart .up-sell h3,
 .product-view .box-tags h2,
+.cart .box-tags h2,
 .info_page h3 {
 	background: url(../images/links-bar-bg.jpg) repeat-x 0 100%;
 	color: #666;
@@ -1832,9 +1842,13 @@ ul.tabs li.active {
 	background: url(../images/zoom-icon.gif) 100% 100% no-repeat;
 }
 /* Block: Upsell */
-.product-view .up-sell .products-grid td { border:1px solid #CCC;}
+.product-view .up-sell .products-grid td,
+.cart .up-sell .products-grid td {
+	border:1px solid #CCC;
+}
 .products-grid .upsell-box-padding { background-color: #F9F9F9; }
 .products-grid .upsell-box-padding:hover { background-color: #fff; }
+
 /* Video Modal*/
 #video, #video-flow {
 	background: url(../images/modal_vid_bg.png) 0 0 no-repeat;
@@ -2710,3 +2724,17 @@ div.article ul li {
 	background: transparent url(../images/bottom-arrow.png) no-repeat scroll 0 4px;
 	padding: 0 0 4px 14px;
 }
+
+/* Block: Upsell */
+.cart .up-sell { margin: 5px 0; }
+.products-grid .upsell-box-padding { border:0;  padding:10px;  }
+
+#upsell-product-table.products-grid { border-bottom:0; width:100%; }
+#upsell-product-table.products-grid td { padding:5px; }
+#upsell-product-table.products-grid .product-image { height: auto; }
+
+#upsell-product-table {margin-bottom: 15px}
+#upsell-product-table .product-name {font-size:1em; font-weight:bold; line-height:1.5; background-image: none; border: 0;margin:0 0 5px 0; padding:0 }
+#upsell-product-table h4 { font-size: 1em; line-height: 1em; margin-bottom: 8px; }
+#upsell-product-table .ratings { padding: 2px 0; text-align: right; }
+.cart .up-sell h3, .cart .box-tags h2 { font-size:1.3em; font-weight:normal; line-height:2.9em; margin:0 -10px 10px -14px; padding:0 0 5px 24px; }

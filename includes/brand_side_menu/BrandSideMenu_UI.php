@@ -2,6 +2,9 @@
 
 class BrandSideMenu_UI extends SideMenu_UI {
 
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct() {
 
 		global $folder_root;
@@ -12,7 +15,10 @@ class BrandSideMenu_UI extends SideMenu_UI {
 
 	}
 
-	public function render($data = null) {
+	//--------------------------------------------------------------------------
+	//
+
+	public function render() {
 
 		$brand_side_menu_bllc = new BrandSideMenu_BLLC();
 

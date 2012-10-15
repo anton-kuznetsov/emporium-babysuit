@@ -5,7 +5,7 @@ class SearchResults_BLLC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	// Конструктор
+	//
 
 	function __construct() {
 

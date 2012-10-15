@@ -2,13 +2,24 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
+	require_once "../request.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+	//
+
+	$request = new Request(array('restful' => true));
+
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'start',    'type' => 'int'                        ),
+			array( 'name' => 'limit',    'type' => 'int',    'default' => 25    ),
+			array( 'name' => 'sort',     'type' => 'string'                     ),
+			array( 'name' => 'dir',      'type' => 'string', 'default' => 'ASC' ),
+			array( 'name' => 'filter',   'type' => 'array',  'default' => null  ),
+		),
+		$request
+	);
 
 	//
 
@@ -16,7 +27,16 @@
 
 	$send_message_dalc = new SendMessage_DALC();
 
-	$send_messages = $send_message_dalc->GetItemsLimit(array("fio", "subject", "status", "dt"), $where, $start, $limit);
+	$send_messages = $send_message_dalc->GetItemsLimit(
+		array(
+			"fio",
+			"subject",
+			"status",
+			"dt"
+		),
+		$where,
+		$start, $limit
+	);
 
 	$array = array();
 

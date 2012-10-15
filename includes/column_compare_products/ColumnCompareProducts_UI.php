@@ -3,8 +3,10 @@
 class ColumnCompareProducts_UI {
 
 	protected $folder_class = '';
+	protected $slider       = NULL;
 
-	protected $slider = NULL;
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct() {
 
@@ -13,6 +15,9 @@ class ColumnCompareProducts_UI {
 		$this->folder_class = $folder_root . '/includes/column_compare_products/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

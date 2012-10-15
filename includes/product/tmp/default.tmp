@@ -137,8 +137,52 @@
 				<p class="availability in-stock">Доступность: <span>в наличии</span></p>
 				<div class="add-to-box">
 					<div class="add-to-cart">
-						<label for="qty">Кол-во:</label>
-						<input type="text" name="qty" id="qty" maxlength="12" value="1" title="Кол-во" class="input-text qty" />
+						<div class="qty-box">
+							<label for="qty">Кол-во:</label>
+							<input type="text" name="qty" id="qty" maxlength="12" value="1" title="Кол-во" class="input-text qty" /><br />
+						</div>
+						<div>
+							<label for="qty">Размер:</label>
+							<select name="size" id="size" class="input-select">
+								<option selected value="S">S</option>
+								<option value="M">M</option>
+								<option value="L">L</option>
+							</select><br />
+						</div>
+						<div id="info" class="table-box info_page">
+							<table class="data-table" id="article-size-table">
+								<colgroup>
+									<col width="25%">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="label"></th>
+										<th class="label">Рост малыша, см</th>
+									</tr>
+									<tr>
+										<th class="label">S (6..12 мес)</th>
+										<td class="data">62..74</td>
+									</tr>
+									<tr>
+										<th class="label">M (12..18 мес)</th>
+										<td class="data">74..78</td>
+									</tr>
+									<tr>
+										<th class="label">L (18..24 мес)</th>
+										<td class="data">78..83</td>
+									</tr>
+								</tbody>
+							</table>
+
+<script type="text/javascript">
+
+	decorateTable('article-size-table');
+
+</script>
+
+						</div>
+						
 						<button type="button" title="В корзину" class="button btn-cart" onclick="productAddToCartForm.submit()">
 							<span><span>В корзину</span></span>
 						</button>             						
@@ -235,9 +279,9 @@
 
 	<div class="product-collateral">                 		
 		<ul class="tabs">
-			<li>			
+			<!-- <li>			
 				<a href="#overview">Обзор</a>
-			</li>
+			</li> -->
 			<li>			
 				<a href="#description">Описание</a>
 			</li>
@@ -249,10 +293,10 @@
 			</li> -->
 		</ul>
 		<div class="tab_container">
-			<div id="overview" class="short-description std tab_content">
+			<!-- <div id="overview" class="short-description std tab_content">
 				<h2>Обзор</h2>
 				<p><?php echo $data['overview']; ?></p>                      				
-			</div>                             			
+			</div> -->                             			
 			<div id="description" class="description tab_content">
 				<h2>Описание</h2>
 				<div class="std">

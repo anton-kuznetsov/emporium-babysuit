@@ -4,6 +4,9 @@ class FooterMenu_UI {
 
 	protected $folder_class = '';
 
+	//--------------------------------------------------------------------------
+	//
+
 	function __construct() {
 
 		global $folder_root;
@@ -11,6 +14,9 @@ class FooterMenu_UI {
 		$this->folder_class = $folder_root . '/includes/footer_menu/';
 
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

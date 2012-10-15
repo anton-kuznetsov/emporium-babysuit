@@ -11,6 +11,9 @@
 	require_once "_pages/CartPage/CartPage_UI.php";
 	require_once "_pages/CreateOrderPage/CreateOrderPage_BLLC.php";
 	require_once "_pages/CreateOrderPage/CreateOrderPage_UI.php";
+	require_once "_pages/DeliveryCalcPage/DeliveryCalcPage_UI.php";
+	require_once "_pages/SendMessagePage/SendMessagePage_BLLC.php";
+	require_once "_pages/SendMessagePage/SendMessagePage_UI.php";
 
 	// BASE MODULES
 
@@ -211,6 +214,17 @@
 	// Footer Menu
 
 	require_once "footer_menu/FooterMenu_UI.php";
+
+	// Delivery Calc
+
+	//require_once "delivery_calc/DeliveryCalc_BLLC.php";
+	require_once "delivery_calc/DeliveryCalc_UI.php";
+
+	// Send Message
+
+	require_once "send_message/SendMessage_DALC.php";
+	require_once "send_message/SendMessage_BLLC.php";
+	require_once "send_message/SendMessage_UI.php";
 
 	// DALC
 

@@ -7,7 +7,9 @@
         	<ol id="recently-viewed-items" class="block-related">
 
 <?php
+
 	foreach ($data as $item) {
+
 ?>
 
 		<li class="item">
@@ -15,7 +17,9 @@
 		</li>
 
 <?php
+
 	}
+
 ?>
 
 			</ol>

@@ -2,11 +2,12 @@
 
 class CreateOrder_UI extends UI {
 
-	protected $folder_class = '';
-
-	protected $data = array();
-
+	protected $folder_class     = '';
+	protected $data             = array();
 	protected $href_cart_params = NULL;
+
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct( $data = array() ) {
 

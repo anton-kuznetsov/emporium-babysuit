@@ -119,8 +119,25 @@ class CategoryProducts_DALC extends DALC {
 
 			$items[$row['id']] = $row;
 			
-			$items[$row['id']]['href_image_90'] = $site_root . '/upload/90x90/' . $items[$row['id']]['href_image_90'];
+			$product_photos = $this->SQL_SelectList (
+				'product_photos',
+				array('file_name'),
+				' id_product = ' . $row['id'],
+				'',
+				1
+			);
 
+			if ( isset( $product_photos ) ) {
+
+				$product_photos = array_values($product_photos);
+
+				$items[$row['id']]['href_image_90'] = $site_root . '/upload/90x90/' . $product_photos[0]['file_name'];
+	
+			} else {
+	
+				$items[$row['id']]['href_image_90'] = '';
+	
+			}
 		}
 
 		mysql_free_result($result);

@@ -5,7 +5,7 @@ class ContentSlider_DALC extends DALC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	// Конструктор
+	//
 
 	function __construct() {
 
@@ -65,8 +65,25 @@ class ContentSlider_DALC extends DALC {
 
 			$items[$row['id']] = $row;
 			
-			$items[$row['id']]['href_image_250'] = $site_root . '/upload/250x250/' . $items[$row['id']]['href_image_250'];
+			$product_photos = $this->SQL_SelectList (
+				'product_photos',
+				array('file_name'),
+				' id_product = ' . $row['id'],
+				'',
+				1
+			);
+	
+			if ( isset( $product_photos ) ) {
 
+				$product_photos = array_values($product_photos);
+
+				$items[$row['id']]['href_image_250'] = $site_root . '/upload/250x250/' . $product_photos[0]['file_name'];
+	
+			} else {
+	
+				$items[$row['id']]['href_image_250'] = '';
+	
+			}
 		}
 
 		mysql_free_result($result);

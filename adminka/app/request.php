@@ -1,9 +1,7 @@
 <?php
 
-/**
- * @class Request
- */
 class Request {
+
     public $restful, $method, $controller, $action, $id, $params;
 
     public function __construct($params) {
@@ -77,3 +75,4 @@ class Request {
     }
 }
 
+?>

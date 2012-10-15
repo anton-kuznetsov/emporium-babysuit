@@ -2,41 +2,28 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
+	require_once "../request.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('./request.php');
+	//
 
 	$request = new Request(array('restful' => true));
 
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'id_order', 'type' => 'int' ),
+		),
+		$request
+	);
+
 	//
+
 	$where = '';
 
-	$id_order = 0;
+	if ( isset($item['id_order']) ) {
 
-	if (isset($_REQUEST['id_order'])) {
-
-		$id_order = $_REQUEST['id_order'];
-
-	} else {
-
-		if (isset($request->params->id_order)) {
-
-			$id_order = $request->params->id_order;
-
-		}
-	}
-
-	// Проверяю, что параметр id_brand существует
-
-	if ( $id_order ) {
-
-		$where = ' id_order = ' . $id_order;
+		$where = ' id_order = ' . $item['id_order'];
 
 	}
 	
@@ -44,7 +31,7 @@
 
 	$order_dalc = new Order_DALC();
 
-	$order = $order_dalc->GetOrder( $id_order );
+	$order = $order_dalc->GetOrder( $item['id_order'] );
 
 // 	echo json_encode(Array(
 // 

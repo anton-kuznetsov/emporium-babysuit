@@ -26,9 +26,30 @@ class Product_DALC extends DALC {
 
 		$data = $this->SQL_SelectItem('products', NULL, $id_product );
 
-		$data['href_image_250'] = $site_root . '/upload/250x250/' . $data['href_image_250'];
-		$data['href_image_90']  = $site_root . '/upload/90x90/' . $data['href_image_90'];
-		$data['href_image_50']  = $site_root . '/upload/50x50/' . $data['href_image_50'];
+		$product_photos = $this->SQL_SelectList (
+			'product_photos',
+			array('file_name'),
+			' id_product = ' . $data['id'],
+			'',
+			1
+		);
+
+		if ( isset( $product_photos ) ) {
+
+			$product_photos = array_values($product_photos);
+
+			$data['href_image_250'] = $site_root . '/upload/250x250/' . $product_photos[0]['file_name'];
+			$data['href_image_90']  = $site_root . '/upload/90x90/' . $product_photos[0]['file_name'];
+			$data['href_image_50']  = $site_root . '/upload/50x50/' . $product_photos[0]['file_name'];
+
+		} else {
+
+			$data['href_image_250'] = '';
+			$data['href_image_90']  = '';
+			$data['href_image_50']  = '';
+
+		}
+
 
 		return $data;
 
@@ -49,10 +70,29 @@ class Product_DALC extends DALC {
 
 			$id = $item['id'];
 
-			$items[$id]['href_image_250'] = $site_root . '/upload/250x250/' . $items[$id]['href_image_250'];
-			$items[$id]['href_image_90']  = $site_root . '/upload/90x90/' . $items[$id]['href_image_90'];
-			$items[$id]['href_image_50']  = $site_root . '/upload/50x50/' . $items[$id]['href_image_50'];
+			$product_photos = $this->SQL_SelectList (
+				'product_photos',
+				array('file_name'),
+				' id_product = ' . $id,
+				'',
+				1
+			);
+	
+			if ( isset( $product_photos ) ) {
 
+				$product_photos = array_values($product_photos);
+
+				$items[$id]['href_image_250'] = $site_root . '/upload/250x250/' . $product_photos[0]['file_name'];
+				$items[$id]['href_image_90']  = $site_root . '/upload/90x90/' . $product_photos[0]['file_name'];
+				$items[$id]['href_image_50']  = $site_root . '/upload/50x50/' . $product_photos[0]['file_name'];
+	
+			} else {
+	
+				$items[$id]['href_image_250'] = '';
+				$items[$id]['href_image_90']  = '';
+				$items[$id]['href_image_50']  = '';
+	
+			}
 		}
 
 		//
@@ -214,10 +254,29 @@ class Product_DALC extends DALC {
 
 			$id = $item['id'];
 
-			$items[$id]['href_image_250'] = $site_root . '/upload/250x250/' . $items[$id]['href_image_250'];
-			$items[$id]['href_image_90']  = $site_root . '/upload/90x90/' . $items[$id]['href_image_90'];
-			$items[$id]['href_image_50']  = $site_root . '/upload/50x50/' . $items[$id]['href_image_50'];
+			$product_photos = $this->SQL_SelectList (
+				'product_photos',
+				array('file_name'),
+				' id_product = ' . $id,
+				'',
+				1
+			);
+	
+			if ( isset( $product_photos ) ) {
 
+				$product_photos = array_values($product_photos);
+
+				$items[$id]['href_image_250'] = $site_root . '/upload/250x250/' . $product_photos[0]['file_name'];
+				$items[$id]['href_image_90']  = $site_root . '/upload/90x90/' . $product_photos[0]['file_name'];
+				$items[$id]['href_image_50']  = $site_root . '/upload/50x50/' . $product_photos[0]['file_name'];
+	
+			} else {
+	
+				$items[$id]['href_image_250'] = '';
+				$items[$id]['href_image_90']  = '';
+				$items[$id]['href_image_50']  = '';
+	
+			}
 		}
 
 		//

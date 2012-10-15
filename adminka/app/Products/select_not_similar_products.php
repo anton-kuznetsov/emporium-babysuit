@@ -2,44 +2,32 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('./request.php');
-
-	$request = new Request(array('restful' => true));
+	require_once "../request.php";
 
 	//
 
-	$where = '';
+	$request = new Request(array('restful' => true));
 
-	$id_product = 0;
-
-	if (isset($_REQUEST['id_product'])) {
-
-		$id_product = $_REQUEST['id_product'];
-
-	} else {
-
-		if (isset($request->params->id_product)) {
-
-			$id_product = $request->params->id_product;
-
-		}
-	}
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'id_product', 'type' => 'int' ),
+		),
+		$request
+	);
 
 	//
 
 	$dalc = new DALC();
 
-	$items = $dalc->SQL_SelectList('product_relations', NULL, ' id_product = ' . $id_product );
+	$items = $dalc->SQL_SelectList(
+		'product_relations',
+		NULL,
+		' id_product = ' . $item['id_product']
+	);
 
-	$ids = $id_product;
+	$ids = $item['id_product'];
 	$i   = 0;
 
 	if (isset($items)) {
@@ -59,7 +47,15 @@
 
 	$products_qty = $product_dalc->Count($where);
 
-	$products = $product_dalc->GetItemsLimit(array("label", "price", "articul"), $where, $start, $limit);
+	$products = $product_dalc->GetItemsLimit(
+		array(
+			"label",
+			"price",
+			"articul"
+		),
+		$where,
+		$start, $limit
+	);
 
 	//
 
@@ -76,7 +72,7 @@
 
 	echo json_encode(Array(
 	    "totalCount" => $products_qty,
-	    "items"  => $array
+	    "items"      => $array
 	));
 
 ?>

@@ -2,42 +2,28 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
+	require_once "../request.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('./request.php');
+	//
 
 	$request = new Request(array('restful' => true));
+
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'id_product', 'type' => 'int' ),
+		),
+		$request
+	);
 
 	//
 
 	$where = '';
 
-	$id_product = 0;
+	if ( isset($item['id_product']) ) {
 
-	if (isset($_REQUEST['id_product'])) {
-
-		$id_product = $_REQUEST['id_product'];
-
-	} else {
-
-		if (isset($request->params->id_product)) {
-
-			$id_product = $request->params->id_product;
-
-		}
-	}
-
-	// Проверяю, что параметр id_product существует
-
-	if ( $id_product ) {
-
-		$where = ' id_product = ' . $id_product;
+		$where = ' id_product = ' . $item['id_product'];
 
 	}
 
@@ -45,7 +31,7 @@
 
 	$product_dalc = new Product_DALC();
 
-	$similar_products = $product_dalc->GetAccessories($id_product, 0, 0);
+	$similar_products = $product_dalc->GetAccessories($item['id_product'], 0, 0);
 
 	$similar_products_qty = count($similar_products);
 
@@ -64,7 +50,7 @@
 
 	echo json_encode(Array(
 	    "totalCount" => $similar_products_qty,
-	    "items"  => $array
+	    "items"      => $array
 	));
 
 ?>

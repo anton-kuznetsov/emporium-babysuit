@@ -2,9 +2,11 @@
 
 class InfoPageContent_UI {
 
-	protected $folder_class = '';
-
+	protected $folder_class       = '';
 	protected $current_page_label = 'default';
+
+	//--------------------------------------------------------------------------
+	//
 
 	function __construct( $data = array () ) {
 
@@ -18,6 +20,9 @@ class InfoPageContent_UI {
 
 		}
 	}
+
+	//--------------------------------------------------------------------------
+	//
 
 	public function render() {
 

@@ -1,41 +1,27 @@
-﻿<?php
+<?php
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('./request.php');
-
-	$request = new Request(array('restful' => true));
+	require_once "../request.php";
 
 	//
 
-	$id_product = 0;
+	$request = new Request(array('restful' => true));
 
-	if (isset($_REQUEST['id_product'])) {
-
-		$id_product = $_REQUEST['id_product'];
-
-	} else {
-
-		if (isset($request->params->id_product)) {
-
-			$id_product = $request->params->id_product;
-
-		}
-	}
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'id_product', 'type' => 'int' ),
+		),
+		$request
+	);
 
 	// Получить массив имён изображения
  
 	$product_dalc = new Product_DALC();
-	
-	$product_photos = $product_dalc->GetPhotos( $id_product );
+
+	$product_photos = $product_dalc->GetPhotos( $item['id_product'] );
 
 	//
 
@@ -73,7 +59,7 @@
 					'thumb_url' => $url_thumbs . $name
 				)
 			);
-		
+
 		}
 	}
 

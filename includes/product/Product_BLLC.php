@@ -5,7 +5,7 @@ class Product_BLLC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	// Конструктор
+	//
 
 	function __construct() {
 
@@ -14,7 +14,10 @@ class Product_BLLC {
 		$this->folder_class = $folder_root . '/includes/product/';
 
 	}
-	
+
+	//--------------------------------------------------------------------------
+	//
+
 	public function GetData( $id_product ) {
 
 		$data = array();

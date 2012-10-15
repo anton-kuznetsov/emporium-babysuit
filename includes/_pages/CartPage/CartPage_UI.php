@@ -22,7 +22,7 @@ class CartPage_UI extends Page_UI {
 
 		switch ($this->options['action']) {
 			case 'add':
-				$cart_page_bllc->AddItem( $this->options['id_product'], $this->options['qty'] );
+				$cart_page_bllc->AddItem( $this->options['id_product'], $this->options['qty'], $this->options['size'] );
 				break;
 			case 'delete':
 				$cart_page_bllc->DeleteItem( $this->options['id_item'] );

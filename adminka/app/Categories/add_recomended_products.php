@@ -2,55 +2,21 @@
 
 	// Инициализация
 
+	require_once "../var.php";
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+	require_once "../request.php";
 
 	//
-
-	$item = array();
-
-	require('./request.php');
 
 	$request = new Request(array('restful' => true));
 
-	//
-
-	$item['id'] = '0';
-
-	if (isset($_REQUEST['id'])) {
-
-		$item['id'] = $_REQUEST['id'];
-
-	} else {
-
-		if (isset($request->params->id)) {
-
-			$item['id'] = $request->params->id;
-
-		}
-	}
-
-	//
-
-	$item['ids'] = '-1';
-
-	if (isset($_REQUEST['ids'])) {
-
-		$item['ids'] = $_REQUEST['ids'];
-
-	} else {
-
-		if (isset($request->params->ids)) {
-
-			$item['ids'] = $request->params->ids;
-
-		}
-	}
+	$item = Utils::GetRequestParamList (
+		array(
+			array( 'name' => 'id',  'type' => 'int' ),
+			array( 'name' => 'ids', 'type' => 'string', 'defaul' => '-1' ),
+		),
+		$request
+	);
 
 	//
 
@@ -65,8 +31,8 @@
 			$product_dalc->SQL_CreateItem(
 				'category_recomended_products',
 				array(
-					'id_category'   => $item['id'],
-					'id_product' => $product['id']
+					'id_category' => $item['id'],
+					'id_product'  => $product['id']
 				)
 			);
 
