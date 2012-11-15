@@ -68,13 +68,13 @@ class Breadcrumbs_DALC extends DALC {
 
 		global $site_root;
 
-		$product = $this->SQL_SelectItem('products', NULL, ' id = '.$id_product);
+		$product = $this->SQL_SelectItem('products', NULL, $id_product);
 
 		$id_category = $product['id_category'];
 
 		$items = array ();
 
-		$category = $this->SQL_SelectItem('categories', NULL, ' id = ' . $id_category );
+		$category = $this->SQL_SelectItem('categories', NULL, $id_category );
 		
 		$items[$category['level']] = array();
 		$items[$category['level']]['id'] = $category['id'];
