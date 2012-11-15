@@ -68,12 +68,14 @@ class Order_DALC extends DALC {
 				array_key_exists($item['id_product'], $product_items)
 			) {
 
-				$items[$item['id']]['label']         = $product_items[$item['id_product']]['label'];
-				$items[$item['id']]['id_currency']   = $product_items[$item['id_product']]['id_currency'];
+				$items[$item['id']]['label']       = $product_items[$item['id_product']]['label'];
+				$items[$item['id']]['articul']     = $product_items[$item['id_product']]['articul'];
+				$items[$item['id']]['id_currency'] = $product_items[$item['id_product']]['id_currency'];
 
 			} else {
 
 				$items[$item['id']]['label']         = '[ товар не найден ]';
+				$items[$item['id']]['articul']       = '';
 				$items[$item['id']]['id_product']    = 0;
 				$items[$item['id']]['id_currency']   = 0;
 

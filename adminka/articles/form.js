@@ -170,7 +170,6 @@ tab_info.form = Ext.create(
 						name: 'anons',
 						xtype: 'htmleditor',
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -178,7 +177,6 @@ tab_info.form = Ext.create(
 						name: 'text',
                         xtype: 'htmleditor',
                         height: 400,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     }
                 ]
@@ -315,7 +313,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -324,7 +321,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     }
                 ]

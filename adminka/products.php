@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	$sitepath = 'http://baby-suit.ru/adminka/';
 

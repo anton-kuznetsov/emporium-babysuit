@@ -4,12 +4,6 @@
 
 	require_once "../classes.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
 	require('./request.php');
 
 	$request = new Request(array('restful' => true));
@@ -36,6 +30,18 @@
 	$order_dalc = new Order_DALC();
 
 	$order = $order_dalc->GetOrder($id);
+
+	//
+
+	$shipping_method = $order_dalc -> SQL_SelectItem('shipping_methods', NULL, $order['id_shipping_method']);
+	$country = $order_dalc -> SQL_SelectItem('countries', NULL, $order['id_country']);
+	$country_region = $order_dalc -> SQL_SelectItem('country_regions', NULL, $order['id_country_region']);
+
+	$order['shipping_method'] = $shipping_method['label'];
+	$order['country']         = $country['label'];
+	$order['country_region']  = $country_region['label'];
+
+	//
 
 	echo json_encode(Array(
 	    "success" => "true",

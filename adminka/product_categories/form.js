@@ -134,13 +134,13 @@ tab_info.form = Ext.create(
                         fieldLabel: 'Наименование',
 						name: 'label',
 						xtype: 'textfield',
-                        anchor: '100%'
+						width: 450
                     },
                     {
                         fieldLabel: 'Родительская категория',
                         name: 'parent',
 						xtype: 'combobox',
-                        anchor: '100%',                        
+                        width: 450,                        
 						store: tab_info.stores.categories,
 						valueField: 'id',
 						displayField: 'label',
@@ -230,6 +230,9 @@ tab_recomended_products.grid.model = Ext.define (
 	    fields: [
 			{
 				name: 'id'
+			},
+			{
+				name: 'in_stock'
 			},
 			{
 				name: 'articul'
@@ -350,6 +353,14 @@ tab_recomended_products.grid.panel = Ext.create(
 			{
 				xtype: 'gridcolumn',
 				width: 80,
+				renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+					return record.get('in_stock') == 1 ? '<span style="color:Green;">да</span>' : '<span style="color:#AAAAAA;">нет</span>';
+				},
+				text: 'В продаже'
+			},
+			{
+				xtype: 'gridcolumn',
+				width: 80,
 				dataIndex: 'articul',
 				fixed: false,
 				text: 'Артикул'
@@ -458,6 +469,14 @@ tab_recomended_products.grid_src.panel = Ext.create(
 				dataIndex: 'id',
 				text: '#',
 				format: '0'
+			},
+			{
+				xtype: 'gridcolumn',
+				width: 80,
+				renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+					return record.get('in_stock') == 1 ? '<span style="color:Green;">да</span>' : '<span style="color:#AAAAAA;">нет</span>';
+				},
+				text: 'В продаже'
 			},
 			{
 				xtype: 'gridcolumn',
@@ -628,7 +647,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -637,7 +655,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     }
                 ]

@@ -22,9 +22,9 @@ class ProductScroller_BLLC {
 
 		// Запрос на получение данных
 
-		$prd_scroller_dalc = new ProductScroller_DALC();
+		$product_scroller_dalc = new ProductScroller_DALC();
 
-		$items = $prd_scroller_dalc->GetItems();
+		$items = $product_scroller_dalc->GetItems();
 
 		return $items;
 

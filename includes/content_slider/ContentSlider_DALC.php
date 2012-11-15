@@ -45,10 +45,11 @@ class ContentSlider_DALC extends DALC {
 			" SELECT " .
 			"    products.* " .
 			" FROM " .
-			"    products_and_categories " .
-			"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+			"    category_recomended_products " .
+			"    INNER JOIN products ON products.id = category_recomended_products.id_product " .
 			" WHERE " .
-			"    products_and_categories.id_category IN (" . $ids . ") " .
+			"    category_recomended_products.id_category IN (" . $ids . ") " .
+			"    AND products.in_stock = 1 " .
 			$where .
 			" ORDER BY " .
 			"    products.dt DESC " .

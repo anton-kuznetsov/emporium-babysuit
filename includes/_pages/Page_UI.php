@@ -1,28 +1,5 @@
 <?php
 
-/*
-Добавить поля в таблицы
-
-products
-	meta_keywords
-	meta_description
-categories
-	full_label
-	meta_keywords
-	meta_description
-brands
-	meta_keywords
-	meta_description
-
-Создать таблицу
-
-info_pages
-	id
-	title
-	meta_keywords
-	meta_description
-*/
-
 class Page_UI {
 
 	protected $modules = null;

@@ -24,13 +24,13 @@ class ProductScroller_DALC extends DALC {
 
 		// Запрос на получение данных
 
-		$items = $this->SQL_SelectAll('product_scroller_items', array ( 'id_product' ));
+		$product_scroller_items = $this->SQL_SelectAll('product_scroller_items', array ( 'id_product' ));
 
 		$ids_product = '-1';
 
-		foreach ($items as $item) {
+		foreach ($product_scroller_items as $product_scroller_item) {
 
-			$ids_product .= ',' . $item['id_product'];		
+			$ids_product .= ',' . $product_scroller_item['id_product'];		
 
 		}
 
@@ -40,10 +40,18 @@ class ProductScroller_DALC extends DALC {
 
 		$product_items = $produst_dalc->GetItemsByIds($ids_product);
 
-		foreach ($items as $item) {
+		// Результат не будет содержать запрещенные товары
 
-			$items[$item['id']]['product'] = $product_items[$item['id_product']];
+		$return_items = array();
 
+		foreach ($product_scroller_items as $product_scroller_item) {
+
+			if ( $product_items[$product_scroller_item['id_product']]['in_stock'] ) {
+
+				$return_items[$product_scroller_item['id']] = $product_scroller_item;
+				$return_items[$product_scroller_item['id']]['product'] = $product_items[$product_scroller_item['id_product']];
+
+			}
 		}
 
 		// Валюта
@@ -61,17 +69,17 @@ class ProductScroller_DALC extends DALC {
 		// Результат:
 		//     price_str = '10 000.00 руб.' 
 
-		foreach ($items as $item) {
+		foreach ($return_items as $return_item) {
 
-			$format = $currencies[$item['product']['id_currency']]['format'];
-			$price = number_format( $items[$item['id']]['product']['price'], 2, '.', ' ' );
-			$items[$item['id']]['product']['price_str'] = sprintf($format, $price);
+			$format = $currencies[$return_item['product']['id_currency']]['format'];
+			$price = number_format( $return_items[$return_item['id']]['product']['price'], 2, '.', ' ' );
+			$return_items[$return_item['id']]['product']['price_str'] = sprintf($format, $price);
 
 		}
-		
+
 		// Готово
 
-		return $items;
+		return $return_items;
 
 	}
 

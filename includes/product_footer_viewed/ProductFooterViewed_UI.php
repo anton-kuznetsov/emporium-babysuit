@@ -16,9 +16,9 @@ class ProductFooterViewed_UI extends FooterViewed_UI {
 
 	public function render() {
 
-		$prd_footer_viewed_bllc = new ProductFooterViewed_BLLC();
+		$product_footer_viewed_bllc = new ProductFooterViewed_BLLC();
 
-		$data = $prd_footer_viewed_bllc->GetItems();
+		$data = $product_footer_viewed_bllc->GetItems();
 
 		include $this->folder_class . 'tmp/default.tmp';
 

@@ -57,7 +57,7 @@
 
 	$products_qty = $product_dalc->Count($where);
 
-	$products = $product_dalc->GetItemsLimit(array("label", "price", "articul"), $where, $start, $limit);
+	$products = $product_dalc->GetItemsLimit(null, $where, $start, $limit);
 
 	//
 

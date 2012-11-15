@@ -5,6 +5,15 @@
 	<div class="block-content">
 		<p class="empty">У вас нет товара в корзине</p>
 	</div>
+	<!-- Кнопки электронных платежных систем -->
+	<div class="block-content">
+		<a href="http://www.webmoney.ru" target="_blank">
+	 		<img src="http://www.webmoney.ru/img/icons/88x31_wm_blue_on_white_ru.png" alt="Принимаем WebMoney" title="Принимаем WebMoney" border="0" width="88" height="31"/>
+		</a>
+		<a href="https://money.yandex.ru" target="_blank">
+	 		<img src="https://money.yandex.ru/img/yamoney_logo88x31.gif" alt="Я принимаю Яндекс.Деньги" title="Я принимаю Яндекс.Деньги" border="0" width="88" height="31"/>
+		</a>
+	</div>
 </div>
 <div class="block">
 	<div class="block-title">

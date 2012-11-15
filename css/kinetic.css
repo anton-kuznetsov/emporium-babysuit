@@ -206,7 +206,15 @@ ul,ol         { list-style:none; }
 
 /* Global Styles ========================================================================= */
 /* Form Elements */
-input,select,textarea,button { font:12px Arial, Helvetica, sans-serif; vertical-align:middle; color:#000; }
+input,
+select,
+textarea,
+button,
+div.button {
+	font: 12px Arial, Helvetica, sans-serif;
+	vertical-align: middle;
+	color: #000;
+}
 input.input-text,select,textarea { background:#fff; border:1px solid #ddd; }
 input.input-text,textarea { padding:2px; }
 select { padding:1px; }
@@ -217,14 +225,48 @@ textarea { overflow:auto; }
 input.radio { margin-right:3px; }
 input.checkbox { margin-right:3px; }
 input.qty { width:2.5em !important; }
-button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
-button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
-button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span { float:left; height:21px; 
+
+button.button::-moz-focus-inner,
+div.button::-moz-focus-inner
+{
+	padding:0;
+	border:0;
+} /* FF Fix */
+
+button.button,
+div.button {
+	-webkit-border-fit:lines;
+} /* <- Safari & Google Chrome Fix */
+
+button.button,
+div.button {
+	overflow:visible;
+	width:auto;
+	border:0;
+	padding:0;
+	margin:0;
+	background:transparent;
+	cursor:pointer;
+}
+
+button.button span,
+div.button span {
+	float:left;
+	height:21px; 
 	background:transparent url(../images/bkg_button.gif) 0 0 no-repeat;
 	padding:0 0 0 8px;
-	font:bold 12px/21px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
-button.button span span { background-position:100% 0; padding:0 12px 0 4px; }
+	font:bold 12px/21px Arial, Helvetica, sans-serif;
+	text-align:center;
+	white-space:nowrap;
+	color:#fff;
+}
+
+button.button span span,
+div.button span span {
+	background-position:100% 0;
+	padding:0 12px 0 4px;
+}
+
 button.disabled {}
 button.disabled span {}
 
@@ -334,7 +376,10 @@ p.control input.radio { margin-right:6px; }
 
 .buttons-set { clear:both; margin:5px 0 0; padding:5px; border:1px solid #ddd; }
 .buttons-set .back-link { float:left; }
-.buttons-set button.button { float:right; }
+.buttons-set button.button,
+.buttons-set div.button {
+	float:right;
+}
 .buttons-set p.required { margin:0 0 5px; }
 
 .buttons-set-order {}
@@ -988,7 +1033,11 @@ REMOVED - Replaced by ProductView */
 .opc { border-bottom:1px solid #ddd; position:relative; }
 .opc li.section { border:1px solid #ddd; border-bottom:0; }
 
-.opc .buttons-set.disabled button.button { display:none; }
+.opc .buttons-set.disabled button.button,
+.opc .buttons-set.disabled div.button {
+	display:none;
+}
+
 .opc .buttons-set .please-wait { height:21px; line-height:21px; }
 
 .opc .step-title { background-color:#f6f6f6; padding:0 5px; text-align:right; }
@@ -1258,9 +1307,33 @@ pre { font-size: 120%; margin:0 0 10px; padding:1px 5px; }
 .col4-set .col-4 { float:right; width:23.5%; }
 
 /* Buttons */
-button.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer; }
-button.button span { float:left; height:21px; padding:0 0 0 8px; font:bold 12px/21px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; }
-button.button span span { background-position:100% 0; padding:0 12px 0 4px; }
+button.button,
+div.button {
+	overflow:visible;
+	width:auto;
+	border:0;
+	padding:0;
+	margin:0;
+	background:transparent;
+	cursor:pointer;
+}
+
+button.button span,
+div.button span {
+	float:left;
+	height:21px;
+	padding:0 0 0 8px;
+	font:bold 12px/21px Arial, Helvetica, sans-serif;
+	text-align:center;
+	white-space:nowrap;
+}
+
+button.button span span,
+div.button span span {
+	background-position:100% 0;
+	padding:0 12px 0 4px;
+}
+
 .buttons-set { clear:both; margin:5px 0 0; padding:5px; border:1px solid #ddd; }
 /* Fixes */
 .block-reorder button, .block-compare button { float:right !important; }
@@ -1736,8 +1809,18 @@ div.scrollable-container.smallerize {
 }
 
 /* Buttons */
-button.button span, button.button span span { color: #666; text-shadow:1px 1px 0 #FFF; background-image: none !important; }
-button.button { border:1px solid #D4D4D4;
+button.button span,
+button.button span span,
+div.button span,
+div.button span span {
+	color: #666;
+	text-shadow:1px 1px 0 #FFF;
+	background-image: none !important;
+}
+
+button.button,
+div.button {
+	border:1px solid #D4D4D4;
 	background: url(../images/sidemenu-bg-active.png) repeat-x;
 }
 
@@ -2392,7 +2475,13 @@ ul#magemenu-top li ul li.active { margin-top: 0; line-height: 15px; }
 div.modalcontent { display: none; position: fixed; left: 50%; z-index: 999999; }
 
 /* Cart Modal*/
-#rokmage-header-cart {  width: 240px; margin-left: -150px; height: 290px; margin-top: -165px; padding: 30px; }
+#rokmage-header-cart {
+	width: 240px;
+	margin-left: -150px;
+	height: 290px;
+	margin-top: -165px;
+	padding: 30px;
+}
 #rokmage-header-cart h6 { padding: 5px 0 10px 5px; font-size: 135%; font-weight: normal; }
 #rokmage-header-cart h4 a { text-decoration: none; }
 #rokmage-header-cart .modalcart-btn-remove { text-decoration: none; }
@@ -2484,11 +2573,14 @@ div.cart-scrollable div.items span.button a, div.cart-scrollable div.items span.
 .images .regular-price { font-size:1.6em; line-height:2em; }
 /* read more button */
 .slider-productinfo button.button span span a, .slider-productinfo button.button span span a:hover { text-decoration: none; }
+
 /* tabs */
-.tabs { clear:both; position: absolute; bottom: 17px; width: 80px; left: 50%; margin-left: -46px; }
+/*.tabs { clear:both; position: absolute; bottom: 17px; width: 80px; left: 50%; margin-left: -46px; }
 .tabs a { width:10px; height:10px; float:left; margin:3px; display:block; font-size:1px; }
 .tabs a:hover { background-position:0 -10px; }
 .tabs a.current { background-position:0 -20px; }
+*/
+
 /* prev and next buttons */
 #homepage-contentslider-container .backward {  z-index: 999; left: -20px; top:127px;  }
 #homepage-contentslider-container .forward {  z-index: 999; right: -21px; top:127px;  }
@@ -2726,6 +2818,21 @@ div.article ul li {
 	padding: 0 0 4px 14px;
 }
 
+/* Product Info Tabs */
+.product-collateral { margin-top: 10px; }
+ul.tabs { margin: 0; padding: 0; float: left; list-style: none; height: 40px; width: 699px; }
+ul.tabs li { float: left; margin: 0; padding: 0; height: 40px; line-height: 40px; overflow: hidden; position: relative; }
+ul.tabs li a { text-decoration: none; display: block; font-size: 1.2em; padding: 0 18px; outline: none; }
+.tab_container { overflow: hidden; clear: both; float: left; width: 698px; margin:0 0 10px; }
+.tab_container h2 { padding-bottom: 10px; font-size:160%; }
+
+.tab_content_tab_cart {
+	padding: 20px;
+}
+
+#upsell-product-table .clearfloat { background-image: none; height: 0; width: 0; }
+#review-form h4, #review-form .form-list { padding:10px 0; }
+
 /* Block: Upsell */
 .cart .up-sell { margin: 5px 0; }
 .products-grid .upsell-box-padding { border:0;  padding:10px;  }
@@ -2738,4 +2845,26 @@ div.article ul li {
 #upsell-product-table .product-name {font-size:1em; font-weight:bold; line-height:1.5; background-image: none; border: 0;margin:0 0 5px 0; padding:0 }
 #upsell-product-table h4 { font-size: 1em; line-height: 1em; margin-bottom: 8px; }
 #upsell-product-table .ratings { padding: 2px 0; text-align: right; }
+
 .cart .up-sell h3, .cart .box-tags h2 { font-size:1.3em; font-weight:normal; line-height:2.9em; margin:0 -10px 10px -14px; padding:0 0 5px 24px; }
+
+/*  */
+
+table.hidden-border {
+	border:0px; /* border="0" */
+	border-collapse:collapse; /* cellspacing="0" */
+}
+
+table.hidden-border td {
+	padding:0px; /* cellpadding="0" */
+}
+
+table.web2 td {
+	padding: 5px 5px 5px 5px;
+}
+
+/*  */
+
+p.msg_warning {
+	color: Red;
+}

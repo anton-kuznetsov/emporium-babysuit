@@ -68,21 +68,14 @@ class Breadcrumbs_DALC extends DALC {
 
 		global $site_root;
 
-		$pc = $this->SQL_SelectList('products_and_categories', NULL, ' id_product = '.$id_product , 1 );
+		$product = $this->SQL_SelectItem('products', NULL, ' id_product = '.$id_product);
 
-		$id_category = 0; 
-		foreach ( $pc as $pci ) {
-			$id_category = $pci['id_category'];
-			break;
-		}
+		$id_category = $product['id_category'];
 
 		$items = array ();
 
-		$categories = $this->SQL_SelectList('categories', NULL, ' id = ' . $id_category );
+		$category = $this->SQL_SelectItem('categories', NULL, ' id = ' . $id_category );
 		
-		$category = $categories[$id_category];
-		$level = $category['level'];
-
 		$items[$category['level']] = array();
 		$items[$category['level']]['id'] = $category['id'];
 		$items[$category['level']]['href'] = $site_root . 'index.php?t=category&id_category=' . $category['id'];
@@ -91,9 +84,7 @@ class Breadcrumbs_DALC extends DALC {
 
 		while ( $category['parent'] > 0 ) {
 
-			$categories = $this->SQL_SelectList('categories', NULL, ' id = ' . $category['parent'] );
-			
-			$category = $categories[$category['parent']];
+			$category = $this->SQL_SelectItem('categories', NULL, ' id = ' . $category['parent'] );
 
 			$items[$category['level']] = array();
 			$items[$category['level']]['id'] = $category['id'];

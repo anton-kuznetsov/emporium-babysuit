@@ -92,9 +92,9 @@ class ArticleCategory_DALC extends DALC {
 	//--------------------------------------------------------------------------
 	//
 
-	public function GetItemsLimit($fields = NULL, $start = 0, $limit = 0) {
+	public function GetItemsLimit($fields = NULL, $where = '', $start = 0, $limit = 0) {
 
-		$items = $this->SQL_SelectList($this->TABLE_NAME, $fields, '', '', $limit, $start);
+		$items = $this->SQL_SelectList($this->TABLE_NAME, $fields, $where, '', $limit, $start);
 
 		return $items;
 

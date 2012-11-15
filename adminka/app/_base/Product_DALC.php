@@ -192,99 +192,70 @@ class Product_DALC extends DALC {
 
 	public function GetPhotos( $id_product ) {
 
-
-
 		global $site_root;
-
-
 
 		$items = $this->SQL_SelectList('product_photos', NULL, ' id_product = ' . $id_product );
 
-
-
 		//
 
+		if ( isset($items) ) {
 
+			foreach ($items as $item) {
+	
+	
+	
+				$id = $item['id'];
+	
+	
+	
+				$items[$id]['href'] = $site_root . '/upload/full/' . $items[$id]['file_name'];
+	
+				$items[$id]['href_image_78'] = $site_root . '/upload/78x78/' . $items[$id]['file_name'];
+	
+	
+	
+			}
 
-		foreach ($items as $item) {
+			return $items;
 
+		} else {
 
-
-			$id = $item['id'];
-
-
-
-			$items[$id]['href'] = $site_root . '/upload/full/' . $items[$id]['file_name'];
-
-			$items[$id]['href_image_78'] = $site_root . '/upload/78x78/' . $items[$id]['file_name'];
-
-
+			return array();
 
 		}
-
-
-
-		//
-
-
-
-		return $items;
-
-
-
 	}
 
-
-
 	//--------------------------------------------------------------------------
-
 	// 
-
-
 
 	public function GetAccessories( $id_product, $qty = 4 ) {
 
-
-
 		global $site_root;
-
-
 
 		$items = $this->SQL_SelectList('product_relations', NULL, ' id_product = ' . $id_product );
 
-
-
 		$ids = '-1';
 
+		if ( isset($items) ) {
 
+			shuffle($items); // Перемешиваю массив в случайном порядке
 
-		shuffle($items); // Перемешиваю массив в случайном порядке
+			$i = 0;
+	
+			foreach ($items as $item) {
+	
+				$ids .= ', ' . $item['id_accessory'];
+	
+				if ( ++$i == $qty ) break;
+	
+			}
+		} else {
 
-
-
-		$i = 0;
-
-
-
-		foreach ($items as $item) {
-
-
-
-			$ids .= ', ' . $item['id_accessory'];
-
-
-
-			if ( ++$i == $qty ) break;
-
-
+			$items = array();
 
 		}
 
-
-
 		//
-
-
 
 		$products = $this->GetItemsByIds($ids);
 

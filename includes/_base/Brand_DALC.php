@@ -41,7 +41,7 @@ class Brand_DALC extends DALC {
 
 
 
-		$items = $this->SQL_SelectList('brand_recomended_products', NULL, ' id_brand = ' . $id_brand );
+		$brand_recomended_products_items = $this->SQL_SelectList('brand_recomended_products', NULL, ' id_brand = ' . $id_brand );
 
 
 
@@ -49,7 +49,7 @@ class Brand_DALC extends DALC {
 
 
 
-		shuffle($items); // Перемешиваю массив в случайном порядке
+		shuffle($brand_recomended_products_items); // Перемешиваю массив в случайном порядке
 
 
 
@@ -57,11 +57,11 @@ class Brand_DALC extends DALC {
 
 
 
-		foreach ($items as $item) {
+		foreach ($brand_recomended_products_items as $brand_recomended_products_item) {
 
 
 
-			$ids .= ', ' . $item['id_product'];
+			$ids .= ', ' . $brand_recomended_products_item['id_product'];
 
 
 
@@ -106,17 +106,24 @@ class Brand_DALC extends DALC {
 		// Результат:
 		//     price_str = '10 000.00 руб.' 
 
+		$return_items = array();
+
 		foreach ($products as $product) {
 
-			$format = $currencies[$product['id_currency']]['format'];
-			$price = number_format( $products[$product['id']]['price'], 2, '.', ' ' );
-			$products[$product['id']]['price_str'] = sprintf($format, $price);
+			if ( $product['in_stock'] ) {
 
+				$format = $currencies[$product['id_currency']]['format'];
+				$price = number_format( $products[$product['id']]['price'], 2, '.', ' ' );
+
+				$return_items[$product['id']] = $product;
+				$return_items[$product['id']]['price_str'] = sprintf($format, $price);
+
+			}
 		}
 
 		//
 
-		return $products;
+		return $return_items;
 
 	}
 };

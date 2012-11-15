@@ -8,34 +8,18 @@
 			<p class="subtotal"><span class="label">на сумму:</span> <span class="price"><?php echo $data['subtotal_str']; ?></span></p>
 		</div>
 		<div class="actions">
-			<button type="button" title="Checkout" class="button" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'step1' )); ?>')"><span><span>Оформить заказ</span></span></button>
+			<button type="button" title="Checkout" class="button" onclick="setLocation('<?php ShopingCart_UI::href(); ?>')"><span><span>Подробнее</span></span></button>
 		</div>
-		<p class="block-subtitle">Recently added item(s)</p>
-		<ol id="cart-sidebar" class="mini-products-list">
-			<li class="item">
-            	<a href="/" title="Ottoman" class="product-image"><img src="/" width="50" height="50" alt="Ottoman" /></a>
-        		<div class="product-details">
-        			<a href="/" title="Удалить" onclick="return confirm('Вы действительно хотите удалить этот товар из корзины?');" class="btn-remove">Удалить</a>
-					<p class="product-name"><a href="/">Ottoman</a></p>
-        			<strong>1</strong> x <span class="price">$299.99</span>
-                </div>
-			</li>
-			<li class="item">
-            	<a href="/" title="BlackBerry 8100 Pearl" class="product-image"><img src="/" width="50" height="50" alt="BlackBerry 8100 Pearl" /></a>
-				<div class="product-details">
-					<a href="/" title="Удалить" onclick="return confirm('Вы действительно хотите удалить этот товар из корзины?');" class="btn-remove">Удалить</a>
-					<p class="product-name"><a href="/">BlackBerry 8100 Pearl</a></p>
-					<strong>1</strong> x <span class="price">$349.99</span>
-                </div>
-			</li>
-		</ol>
+	</div>
 
-<script type="text/javascript">
-
-	decorateList('cart-sidebar', 'none-recursive');
-
-</script>
-
+	<!-- Кнопки электронных платежных систем -->
+	<div class="block-content">
+		<a href="http://www.webmoney.ru" target="_blank">
+	 		<img src="http://www.webmoney.ru/img/icons/88x31_wm_blue_on_white_ru.png" alt="Принимаем WebMoney" title="Принимаем WebMoney" border="0" width="88" height="31"/>
+		</a>
+		<a href="https://money.yandex.ru" target="_blank">
+	 		<img src="https://money.yandex.ru/img/yamoney_logo88x31.gif" alt="Я принимаю Яндекс.Деньги" title="Я принимаю Яндекс.Деньги" border="0" width="88" height="31"/>
+		</a>
 	</div>
 </div>
 <div class="block">

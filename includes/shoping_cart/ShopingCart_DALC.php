@@ -102,23 +102,14 @@ class ShopingCart_DALC extends DALC {
 
 		foreach ($items as $item) {
 
-
-
 			$items[$item['id']]['label']         = $product_items[$item['id_product']]['label'];
-
 			$items[$item['id']]['articul']       = $product_items[$item['id_product']]['articul'];
-
 			$items[$item['id']]['id_currency']   = $product_items[$item['id_product']]['id_currency'];
-
+			$items[$item['id']]['weight']        = $product_items[$item['id_product']]['weight'];
 			$items[$item['id']]['price']         = $product_items[$item['id_product']]['price'];
-
 			$items[$item['id']]['subtotal']      = $items[$item['id']]['price'] * $items[$item['id']]['qty'];
-
 			$items[$item['id']]['href_image_50'] = $product_items[$item['id_product']]['href_image_50'];
-
 			$items[$item['id']]['href_image_90'] = $product_items[$item['id_product']]['href_image_90'];
-
-
 
 		}
 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	// Инициализация
 
@@ -32,7 +32,7 @@
 	}
 
 	// Получить массив имён изображения
- 
+
 	$product_dalc = new Product_DALC();
 	
 	$product_photos = $product_dalc->GetPhotos( $id_product );
@@ -41,10 +41,10 @@
 
 	$images = array();
 
-	$site_path = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/";
+	$site_path = $_SERVER["DOCUMENT_ROOT"];
 
-	$dir = $site_path . "upload/original/";
-	$dir_thumbs = $site_path . "upload/250x250/";
+	$dir = $site_path . "/upload/original/";
+	$dir_thumbs = $site_path . "/upload/250x250/";
 
 	$site_url = "http://baby-suit.ru/";
 
@@ -58,10 +58,10 @@
 			$name = $product_photo["file_name"];
 
 			if (!preg_match('/\.(jpg|gif|png)$/', $name)) continue;
-		
+
 			$size    = filesize($dir . $name);
 			$lastmod = filemtime($dir . $name) * 1000;
-		
+
 			array_push (
 				$images,
 				array (
@@ -73,14 +73,14 @@
 					'thumb_url' => $url_thumbs . $name
 				)
 			);
-		
+
 		}
 	}
 
 	echo json_encode(Array(
-	    "success" => "true",
-	    "total"   => count( $images ),
-	    "data"    => $images
+		"success" => "true",
+		"total"   => count( $images ),
+		"data"    => $images
 	));
 
 ?>

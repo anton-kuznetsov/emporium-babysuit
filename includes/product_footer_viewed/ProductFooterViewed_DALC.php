@@ -24,17 +24,13 @@ class ProductFooterViewed_DALC extends DALC {
 
 		// Запрос на получение данных
 
-		$viewed_items = $this->SQL_SelectListDistinct('product_footer_viewed_items', array ( 'id_product' ), " session_id = '" . session_id() . "' ", ' datetime DESC ', 5 );
+		$product_footer_viewed_items = $this->SQL_SelectListDistinct('product_footer_viewed_items', array ( 'id_product' ), " session_id = '" . session_id() . "' ", ' datetime DESC ', 5 );
 
 		$ids_product = '-1';
 
-		$items = array();
+		foreach ($product_footer_viewed_items as $product_footer_viewed_item) {
 
-		foreach ($viewed_items as $viewed_item) {
-
-			$ids_product .= ',' . $viewed_item['id_product'];
-
-			$items[$viewed_item['id_product']] = array();
+			$ids_product .= ',' . $product_footer_viewed_item['id_product'];
 
 		}
 
@@ -44,10 +40,17 @@ class ProductFooterViewed_DALC extends DALC {
 
 		$produst_items = $produst_dalc->GetItemsByIds($ids_product);
 
+		// Результат не будет содержать запрещенные товары
+
+		$return_items = array();
+
 		foreach ( $produst_items as $produst_item ) {
 
-			$items[$produst_item['id']] = $produst_item;
+			if ( $produst_items[$produst_item['id']]['in_stock'] ) {
 
+				$return_items[$produst_item['id']] = $produst_item;
+
+			}
 		}
 
 		// Валюта
@@ -65,17 +68,17 @@ class ProductFooterViewed_DALC extends DALC {
 		// Результат:
 		//     price_str = '10 000.00 руб.' 
 
-		foreach ($items as $item) {
+		foreach ($return_items as $return_item) {
 
-			$format = $currencies[$item['id_currency']]['format'];
-			$price = number_format( $items[$item['id']]['price'], 2, '.', ' ' );
-			$items[$item['id']]['price_str'] = sprintf($format, $price);
+			$format = $currencies[$return_item['id_currency']]['format'];
+			$price = number_format( $return_items[$return_item['id']]['price'], 2, '.', ' ' );
+			$return_items[$return_item['id']]['price_str'] = sprintf($format, $price);
 
 		}
 
 		// Готово
 
-		return $items;
+		return $return_items;
 
 	}
 

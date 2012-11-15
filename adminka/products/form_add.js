@@ -153,6 +153,12 @@ tab_info.form = Ext.create(
                 region: 'center',
                 items: [
                     {
+                        fieldLabel: 'В продаже',
+                        name: 'in_stock',
+                        inputValue: '1',
+						xtype: 'checkboxfield'
+                    },
+                    {
                         fieldLabel: 'Артикул',
                         name: 'articul',
 						xtype: 'textfield',
@@ -189,6 +195,14 @@ tab_info.form = Ext.create(
 						emptyText: 'Выберите категорию...'
                     },
                     {
+                        fieldLabel: 'Вес, гр',
+						name: 'weight',
+						xtype: 'numberfield',
+                        maxValue: 100000,
+                        minValue: 0,
+                        anchor: '100%'
+                    },
+                    {
                         fieldLabel: 'Цена',
 						name: 'price',
 						xtype: 'numberfield',
@@ -201,7 +215,6 @@ tab_info.form = Ext.create(
 						name: 'overview',
                         xtype: 'htmleditor',
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -209,7 +222,6 @@ tab_info.form = Ext.create(
 						name: 'description',
 						xtype: 'htmleditor',
                         height: 300,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {

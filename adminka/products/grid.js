@@ -14,6 +14,9 @@ grid.model = Ext.define (
 				name: 'id'
 			},
 			{
+				name: 'in_stock'
+			},
+			{
 				name: 'articul'
 			},
 			{
@@ -78,6 +81,14 @@ grid.panel = Ext.create(
 				dataIndex: 'id',
 				text: '#',
 				format: '0'
+			},
+			{
+				xtype: 'gridcolumn',
+				width: 80,
+				renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+					return record.get('in_stock') == 1 ? '<span style="color:Green;">да</span>' : '<span style="color:#AAAAAA;">нет</span>';
+				},
+				text: 'В продаже'
 			},
 			{
 				xtype: 'gridcolumn',

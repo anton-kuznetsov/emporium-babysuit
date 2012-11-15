@@ -57,6 +57,18 @@
 
 	//
 
+	$widgets_for_json = array(
+		array (
+			'text'       => 'Карусель',
+			'id'         => 'wgt_karusel',
+			'href_panel' => $sitepath . 'wgt_karusel.php',
+			'leaf'       => true,
+			'cls'        => 'file'
+		)
+	);
+
+	//
+
 	$nodes['id'] = "root";
 	$nodes['text'] = "Root";
 	$nodes['children'] = array(
@@ -102,6 +114,14 @@
 			'href_panel' => $sitepath . 'send_messages.php',
 			'leaf'       => true,
 			'cls'        => 'file'
+		),
+		array (
+			'text'       => 'Виджеты',
+			'id'         => 'widgets',
+			'href_panel' => '',
+			'leaf'       => false,
+			'cls'        => 'folder',			
+			'children'   => $widgets_for_json
 		)
 	); 
 

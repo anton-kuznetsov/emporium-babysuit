@@ -4,12 +4,6 @@
 
 	require_once "../classes.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
 	//
 
 	$item = array();
@@ -17,6 +11,23 @@
 	require('./request.php');
 
 	$request = new Request(array('restful' => true));
+
+	//
+
+	$item['in_stock'] = 0;
+
+	if (isset($_REQUEST['in_stock'])) {
+
+		$item['in_stock'] = $_REQUEST['in_stock'];
+
+	} else {
+
+		if (isset($request->params->in_stock)) {
+
+			$item['in_stock'] = $request->params->in_stock;
+
+		}
+	}
 
 	//
 
@@ -86,6 +97,23 @@
 		if (isset($request->params->id_category)) {
 
 			$item['id_category'] = $request->params->id_category;
+
+		}
+	}
+
+	//
+
+	$item['weight'] = 0;
+
+	if (isset($_REQUEST['weight'])) {
+
+		$item['weight'] = $_REQUEST['weight'];
+
+	} else {
+
+		if (isset($request->params->weight)) {
+
+			$item['weight'] = $request->params->weight;
 
 		}
 	}
@@ -179,10 +207,12 @@
 	$product = $dalc->SQL_CreateItem(
 		'products',
 		array(
+			'in_stock'    => $item['in_stock'],
 			'articul'     => $item['articul'],
 			'label'       => $item['label'],
 			'id_brand'    => $item['id_brand'],
 			'id_category' => $item['id_category'],
+			'weight'      => $item['weight'],
 			'price'       => $item['price'],
 			'overview'    => $item['overview'],
 			'description' => $item['description'],

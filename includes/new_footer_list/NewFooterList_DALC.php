@@ -26,7 +26,7 @@ class NewFooterList_DALC extends DALC {
 
 		$produst_dalc = new Product_DALC();
 
-		$product_items = $produst_dalc->SQL_SelectList('products', NULL, '', 'dt DESC', '6');
+		$product_items = $produst_dalc->SQL_SelectList('products', NULL, 'in_stock = 1', 'dt DESC', '6');
 
 		return $product_items;
 

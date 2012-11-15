@@ -41,6 +41,10 @@ class Article_UI extends UI {
 
 		//
 
+		$data['text'] = str_replace('\"', '"', $data['text']);
+
+		//
+
 		include $this->folder_class . 'tmp/default.tmp';
 
 	}

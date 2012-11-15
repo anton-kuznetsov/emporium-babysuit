@@ -166,6 +166,12 @@ tab_info.form = Ext.create(
 						value: request_param_id
 					},
                     {
+                        fieldLabel: 'В продаже',
+                        name: 'in_stock',
+                        inputValue: '1',
+						xtype: 'checkboxfield'
+                    },
+                    {
                         fieldLabel: 'Артикул',
                         name: 'articul',
 						xtype: 'textfield',
@@ -202,6 +208,14 @@ tab_info.form = Ext.create(
 						emptyText: 'Выберите категорию...'
                     },
                     {
+                        fieldLabel: 'Вес, гр',
+						name: 'weight',
+						xtype: 'numberfield',
+                        maxValue: 100000,
+                        minValue: 0,
+                        anchor: '100%'
+                    },
+                    {
                         fieldLabel: 'Цена',
 						name: 'price',
 						xtype: 'numberfield',
@@ -214,7 +228,6 @@ tab_info.form = Ext.create(
 						name: 'overview',
                         xtype: 'htmleditor',
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -222,7 +235,6 @@ tab_info.form = Ext.create(
 						name: 'description',
 						xtype: 'htmleditor',
                         height: 300,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -735,7 +747,12 @@ tab_photos.image_upload.panel = Ext.create(
 					                    }
 					                    tab_photos.image_upload.panel.getForm().reset();
 					                    tab_photos.image_list.store.load();
-					                }
+					                },
+					                error: function (form, textStatus, errorThrown) {
+					                	Ext.Msg.alert('Ошибка при отправке изображения на сервер', textStatus);
+					                	tab_photos.image_upload.panel.getForm().reset();
+					                    tab_photos.image_list.store.load();
+									}
 					            }
 							);
 				        }
@@ -790,6 +807,9 @@ tab_similar_products.grid.model = Ext.define (
 	    fields: [
 			{
 				name: 'id'
+			},
+			{
+				name: 'in_stock'
 			},
 			{
 				name: 'articul'
@@ -910,6 +930,14 @@ tab_similar_products.grid.panel = Ext.create(
 			{
 				xtype: 'gridcolumn',
 				width: 80,
+				renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+					return record.get('in_stock') == 1 ? '<span style="color:Green;">да</span>' : '<span style="color:#AAAAAA;">нет</span>';
+				},
+				text: 'В продаже'
+			},
+			{
+				xtype: 'gridcolumn',
+				width: 80,
 				dataIndex: 'articul',
 				fixed: false,
 				text: 'Артикул'
@@ -1018,6 +1046,14 @@ tab_similar_products.grid_src.panel = Ext.create(
 				dataIndex: 'id',
 				text: '#',
 				format: '0'
+			},
+			{
+				xtype: 'gridcolumn',
+				width: 80,
+				renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+					return record.get('in_stock') == 1 ? '<span style="color:Green;">да</span>' : '<span style="color:#AAAAAA;">нет</span>';
+				},
+				text: 'В продаже'
 			},
 			{
 				xtype: 'gridcolumn',
@@ -1217,7 +1253,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -1226,7 +1261,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     }
                 ]

@@ -170,12 +170,12 @@ class Category_DALC extends DALC {
 			"    , products.price " .
 			"    , products.articul " .
 			"    , products.id_currency " .
+			"    , products.in_stock " .
 			" FROM " .
-			"    products_and_categories " .
-			"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+			"    products " .
 			" WHERE " .
 			$where .
-			"    AND products_and_categories.id_category IN (" . $ids . ") ",
+			"    AND products.id_category IN (" . $ids . ") ",
 
 			$this->db
 

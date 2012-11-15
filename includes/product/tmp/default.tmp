@@ -150,27 +150,32 @@
 							</select><br />
 						</div>
 						<div id="info" class="table-box info_page">
-							<table class="data-table" id="article-size-table">
+							<table class="data-table" id="article-size-table" style="width:283px">
 								<colgroup>
-									<col width="25%">
-									<col>
+									<col width="10%">
+									<col width="45%">
+									<col width="45%">
 								</colgroup>
 								<tbody>
 									<tr>
 										<th class="label"></th>
-										<th class="label">Рост малыша, см</th>
+										<th class="label">Возраст, мес</th>
+										<th class="label">Рост, см</th>
 									</tr>
 									<tr>
-										<th class="label">S (6..12 мес)</th>
-										<td class="data">62..74</td>
+										<th class="label">S</th>
+										<td class="data">6..12</th>
+										<td class="data">62..73</td>
 									</tr>
 									<tr>
-										<th class="label">M (12..18 мес)</th>
-										<td class="data">74..78</td>
+										<th class="label">M</th>
+										<td class="data">12..18</th>
+										<td class="data">73..82</td>
 									</tr>
 									<tr>
-										<th class="label">L (18..24 мес)</th>
-										<td class="data">78..83</td>
+										<th class="label">L</th>
+										<td class="data">18..24</th>
+										<td class="data">82..92</td>
 									</tr>
 								</tbody>
 							</table>

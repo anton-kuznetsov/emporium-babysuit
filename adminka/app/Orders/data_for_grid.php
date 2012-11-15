@@ -10,15 +10,28 @@
 	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
 	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
 
-	//
+	// Только оформленные платежи
 
-	$where = '';
+	$where = ' status = 2 ';
+
+	//
 
 	$order_dalc = new Order_DALC();
 
 	$orders_qty = $order_dalc->Count();
 
-	$orders = $order_dalc->GetItemsLimit(array("fio", "email", "phone", "dt"), $where, $start, $limit);
+	$orders = $order_dalc->GetItemsLimit(
+		array(
+			"fio",
+			"email",
+			"phone",
+			"dt",
+			"shipping_cost",
+			"amount_received"
+		),
+		$where,
+		$start, $limit
+	);
 
 	$array = array();
 
@@ -26,18 +39,19 @@
 
 		$order_items = $order_dalc->GetOrderItems( $order["id"] );
 
-		$order_total = 0;
+		$products_cost = 0;
 
 		if ( count($order_items) ) {
 
 			foreach ($order_items as $order_item) {
 
-				$order_total += $order_item["subtotal"];
+				$products_cost += $order_item["subtotal"];
 
 			}
 		}
 
-		$order["total"] = $order_total;
+		$order["products_cost"] = $products_cost;
+		$order["total"]         = $products_cost + $order['shipping_cost'];
 
 		array_push($array, $order);
 

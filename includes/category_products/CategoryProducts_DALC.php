@@ -58,10 +58,10 @@ class CategoryProducts_DALC extends DALC {
 			" SELECT " .
 			"    COUNT(*) AS product_qty " .
 			" FROM " .
-			"    products_and_categories " .
-			"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+			"    products " .
 			" WHERE " .
-			"    products_and_categories.id_category IN (" . $ids . ") " .
+			"    products.id_category IN (" . $ids . ") " .
+			"    AND products.in_stock = 1 " .
 			$where .
 			" ORDER BY " .
 			"    products.dt DESC " .
@@ -101,10 +101,10 @@ class CategoryProducts_DALC extends DALC {
 			" SELECT " .
 			"    products.* " .
 			" FROM " .
-			"    products_and_categories " .
-			"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+			"    products " .
 			" WHERE " .
-			"    products_and_categories.id_category IN (" . $ids . ") " .
+			"    products.id_category IN (" . $ids . ") " .
+			"    AND products.in_stock = 1 " .
 			$where .
 			" ORDER BY " . $order . " " .
 			" LIMIT " . (($p - 1) * $limit) . ", " . $limit . " ",

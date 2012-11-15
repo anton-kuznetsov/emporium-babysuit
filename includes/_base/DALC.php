@@ -162,18 +162,13 @@ class DALC {
 		}
 
 		$result = mysql_query( 
-
 			" SELECT " . $fields_str .
-
 			" FROM " . $table .
-
 			$where .
-
 			$order .
-
-			$limit, $this->db );
-
-
+			$limit,
+			$this->db
+		);
 
 		if (!$result) {
 
@@ -511,7 +506,7 @@ class DALC {
 
 
 
-		$result = mysql_query(
+		mysql_query(
 
 			" INSERT INTO " . $table .
 
@@ -520,20 +515,6 @@ class DALC {
 			$this->db
 
 		);
-
-		
-
-		if (!$result) {
-
-			die('Неверный запрос: ' . mysql_error());
-
-		}
-
-
-
-		mysql_free_result($result);
-
-
 
 		//
 
@@ -575,7 +556,7 @@ class DALC {
 
 
 
-				$sets = ( $sets == '' ? '' : ', ' ) . $field . " = '" . $item[$field] . "' ";
+				$sets .= ( $sets == '' ? '' : ', ' ) . $field . " = '" . $item[$field] . "' ";
 
 
 
@@ -585,9 +566,7 @@ class DALC {
 
 			if ( $sets != '' ) {
 
-
-
-				$result = mysql_query(
+				mysql_query(
 
 					" UPDATE " . $table .
 
@@ -598,18 +577,6 @@ class DALC {
 					$this->db
 
 				);
-
-				
-
-				if (!$result) {
-
-					die('Неверный запрос: ' . mysql_error());
-
-				}
-
-			
-
-				mysql_free_result($result);
 
 			}
 
@@ -639,7 +606,7 @@ class DALC {
 
 
 
-		$result = mysql_query(
+		mysql_query(
 
 			" DELETE FROM " . $table .
 
@@ -648,20 +615,6 @@ class DALC {
 			$this->db
 
 		);
-
-
-
-		if (!$result) {
-
-			die('Неверный запрос: ' . mysql_error());
-
-		}
-
-
-
-		mysql_free_result($result);
-
-
 
 	}
 

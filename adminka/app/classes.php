@@ -1,5 +1,9 @@
 <?php
 
+	// Utils
+	
+	require_once "Utils.php";
+
 	// BASE MODULES
 
 	require_once "_base/DALC.php";
@@ -36,5 +40,9 @@
 	//
 	
 	require_once "_base/SendMessage_DALC.php";
+
+	//
+
+	require_once "_base/Widget_Karusel_DALC.php";
 
 ?>

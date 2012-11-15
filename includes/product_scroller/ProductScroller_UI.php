@@ -16,9 +16,9 @@ class ProductScroller_UI {
 
 	public function render() {
 
-		$prd_scroller_bllc = new ProductScroller_BLLC();
+		$product_scroller_bllc = new ProductScroller_BLLC();
 
-		$data = $prd_scroller_bllc->GetItems();
+		$data = $product_scroller_bllc->GetItems();
 
 		include $this->folder_class . 'tmp/default.tmp';
 

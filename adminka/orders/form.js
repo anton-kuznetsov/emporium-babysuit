@@ -1,12 +1,3 @@
-
-//--------------------------------------------------------------------------------------------------
-// Модель данных
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Источник данных
-
 //--------------------------------------------------------------------------------------------------
 // Панель
 
@@ -95,7 +86,7 @@ tab_info.form = Ext.create(
             {
                 xtype: 'fieldset',
                 title: 'Описание',
-                region: 'center',
+                region: 'north',
                 items: [
                 	{
 						xtype: 'hiddenfield',
@@ -106,19 +97,19 @@ tab_info.form = Ext.create(
                         fieldLabel: 'Заказчик',
 						name: 'fio',
 						xtype: 'textfield',
-                        anchor: '100%'
+                        width: 400
                     },
 					{
                         fieldLabel: 'E-Mail',
 						name: 'email',
 						xtype: 'textfield',
-                        anchor: '100%'
+                        width: 400
                     },
 					{
                         fieldLabel: 'Телефон',
                         name: 'phone',
 						xtype: 'textfield',
-                        anchor: '100%'
+                        width: 250
                     },
 					{
                         fieldLabel: 'Оформлен',
@@ -126,10 +117,63 @@ tab_info.form = Ext.create(
                         xtype: 'datefield',
                         format: 'd.m.Y',
                         altFormats: 'Y-m-d H:i:s',
-                        anchor: '100%'
+                        width: 200
                     }
                 ]
-            }
+            },
+            {
+				xtype: 'fieldset',
+                title: 'Доставка',
+                region: 'center',
+                items: [
+                	{
+                        fieldLabel: 'Способ',
+						name: 'shipping_method',
+						xtype: 'textfield',
+                        width: 400,
+                        readOnly: true
+					},
+                    {
+                        fieldLabel: 'Параметры',
+						name: 'shipping_params',
+						xtype: 'textareafield',
+                        height: 100,
+                        anchor: '100%',
+                        readOnly: true
+                    },
+					{
+                        fieldLabel: 'Страна',
+						name: 'country',
+						xtype: 'textfield',
+                        width: 400,
+                        readOnly: true
+                    },
+					{
+                        fieldLabel: 'Регион',
+                        name: 'country_region',
+						xtype: 'textfield',
+                        width: 400,
+                        readOnly: true
+                    },
+                    {
+                        fieldLabel: 'Адрес',
+						name: 'shipping_address',
+						xtype: 'textareafield',
+                        height: 100,
+                        anchor: '100%',
+                        readOnly: true
+                    },
+					{
+                        fieldLabel: 'Стоимость',
+						name: 'shipping_cost',
+						xtype: 'numberfield',
+                        maxValue: 100000,
+                        minValue: 0,
+                        width: 200,
+                        readOnly: true
+                    }
+                ]
+			}
 		],
 
 		dockedItems: [
@@ -225,6 +269,9 @@ tab_order_items.grid.model = Ext.define (
 				name: 'qty'
 			},
 			{
+				name: 'size'
+			},
+			{
 				name: 'subtotal'
 			}
 	    ]
@@ -290,7 +337,9 @@ tab_order_items.grid.panel = Ext.create(
 					} else {
 						return '<a href="products.php?noframe=1&id=' + record.get('id_product') + '">' +
 							record.get('label') +
-							'</a>';					
+							'</a><p style="padding: 4 0 0 0;">Размер: ' +
+							record.get('size') +
+							'</p>';
 					}
 				},
 				text: 'Наименование'
@@ -381,6 +430,123 @@ tab_order_items.panel = Ext.create(
 );
 
 //--------------------------------------------------------------------------------------------------
+// Панель вкладки "Состав заказа"
+
+var tab_robokassa = {};
+
+tab_robokassa.onGetPaymentURL = function () {
+
+    Ext.Ajax.request(
+		{
+        	url: 'app/Robokassa.php',
+        	method: 'POST',
+        	params: {
+				'id_order': request_param_id,
+				'score': tab_robokassa.form.getForm().findField('score').getValue()
+			},
+        	success: function(response) {
+        		var obj = Ext.decode(response.responseText);
+				tab_robokassa.form.getForm().findField('url').setValue(obj.url);
+	        },
+			failure: function(){
+				alert('Произошла ошибка');
+				tab_robokassa.form.getForm().findField('url').setValue('');
+			}
+		}
+	);
+
+};
+
+tab_robokassa.form = Ext.create(
+	'Ext.form.Panel',
+	{
+		layout: {
+			type: 'border'
+		},
+
+		title: 'My Form',
+
+		bodyPadding: 10,
+		hideCollapseTool: false,
+		preventHeader: true,
+		region: 'center',
+
+		border: false,
+
+		items: [
+            {
+                xtype: 'fieldset',
+                title: 'Оплата',
+                region: 'center',
+                items: [
+                    {
+                        fieldLabel: 'Сумма',
+						name: 'score',
+						xtype: 'numberfield',
+                        maxValue: 100000,
+                        minValue: 0,
+                        width: 200//,
+                        //readOnly: true
+                    },
+                    {
+						xtype: 'button',
+						text: 'Получить ссылку',
+						margin: '0 0 20 105',
+						handler: tab_robokassa.onGetPaymentURL
+					},
+                    {
+                        fieldLabel: 'Ссылка',
+						name: 'url',
+						xtype: 'textareafield',
+                        height: 100,
+                        anchor: '100%',
+                        readOnly: true
+                    }
+                ]
+            }
+		],
+	}
+);
+
+tab_robokassa.form.load(
+	{
+		url: 'app/Orders/get_owing.php',
+		params: {
+			'id_order': request_param_id
+		},
+		callback: function(){
+			//
+		},
+		success: function(){
+			//
+		},
+		failure: function(){
+			//
+		}
+	}
+);
+
+tab_robokassa.panel = Ext.create(
+	'Ext.panel.Panel',
+	{
+		layout: {
+			type: 'border'
+		},
+		title: 'Robokassa',
+
+		border: false,
+
+		tabConfig: {
+			xtype: 'tab',
+			region: 'west'
+		},
+		items: [
+			tab_robokassa.form
+		]
+	}
+);
+
+//--------------------------------------------------------------------------------------------------
 // 
 
 tabs.panel = Ext.create(
@@ -395,7 +561,8 @@ tabs.panel = Ext.create(
 
 		items: [
 			tab_info.panel,
-			tab_order_items.panel
+			tab_order_items.panel,
+			tab_robokassa.panel
 		]
 	}
 );

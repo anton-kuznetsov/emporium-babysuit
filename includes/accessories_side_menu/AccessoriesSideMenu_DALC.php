@@ -50,7 +50,7 @@ class AccessoriesSideMenu_DALC extends DALC {
 				"    , COUNT(*) AS product_qty " .
 				" FROM " .
 				"    categories " .
-				"    LEFT JOIN products_and_categories ON categories.id = products_and_categories.id_category " .
+				"    LEFT JOIN products ON categories.id = products.id_category " .
 				" WHERE " .
 				"    categories.parent = (" . $category['id'] . ") " .
 				" GROUP BY " .

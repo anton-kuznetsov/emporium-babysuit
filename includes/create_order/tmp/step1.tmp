@@ -2,31 +2,83 @@
 	<div class="page-title">
 		<h1><span class="color">Оформление заказа</span></h1>
 	</div>
-	<div id="reviews" class="tab_content">
-		<form action="<?php CreateOrder_UI::href( array( 'action' => 'step1_next' ) ); ?>" method="post" id="save-order-form">
+	<div id="reviews">
+		<form action="<?php CreateOrder_UI::href( array( 'action' => 'step1_next', 'id_order' => $data['id'] ) ); ?>" method="post" id="save-order-form">
 			<div class="form-add">
 				<ul class="form-list">
 					<li>
-						<label for="nickname_field" class="required"><em>*</em>ФИО</label>
+						<label for="fio_field" class="required"><em>*</em>ФИО</label>
 						<div class="input-box">
 							<input type="text" name="fio" id="fio_field" class="input-text required-entry" value="<?php echo $data['fio']; ?>" />
 						</div>
 					</li>
 					<li>
-						<label for="summary_field" class="required"><em>*</em>E-mail</label>
+						<label for="email_field" class="required"><em>*</em>E-mail</label>
 						<div class="input-box">
 							<input type="text" name="email" id="email_field" class="input-text required-entry validate-email" value="<?php echo $data['email']; ?>" />
 						</div>
 					</li>
 					<li>
-						<label for="review_field" class="required"><em>*</em>Телефон</label>
+						<label for="phone_field" class="required"><em>*</em>Телефон</label>
 						<div class="input-box">
 							<input type="text" name="phone" id="phone_field" class="input-text required-entry" value="<?php echo $data['phone']; ?>" />
+						</div>
+					</li>
+					<!-- Адрес -->
+					<li>
+						<label for="id_country_field" class="required"><em>*</em>Страна</label>
+						<div class="input-box">
+							<select name="id_country" id="id_country_field">
+					
+<?php
+
+	foreach ($data['countries'] as $country) {
+
+?>
+
+								<option value="<?php echo $country['id']; ?>" <?php if ($country['id'] == $data['id_country']) {echo 'selected="selected"';} ?> ><?php echo $country['label']; ?></option>
+
+<?php
+
+	}
+
+?>
+
+							</select>
+						</div>
+					</li>
+					<li>
+						<label for="id_country_region_field" class="required"><em>*</em>Регионы</label>
+						<div class="input-box">
+							<select name="id_country_region" id="id_country_region_field">
+					
+<?php
+
+	foreach ($data['country_regions'] as $country_region) {
+
+?>
+
+								<option value="<?php echo $country_region['id']; ?>" <?php if ($country_region['id'] == $data['id_country_region']) {echo 'selected="selected"';} ?> ><?php echo $country_region['label']; ?></option>
+
+<?php
+
+	}
+
+?>
+
+							</select>
+						</div>
+					</li>
+					<li>
+						<label for="shipping_address_field" class="required"><em>*</em>Адрес доставки</label>
+						<div class="input-box input-box-100prc">
+							<textarea name="shipping_address" id="shipping_address_field" class="input-textarea input-textarea-100prc"><?php echo $data['shipping_address']; ?></textarea>
 						</div>
 					</li>
 				</ul>
 			</div>
 			<div class="buttons-set">
+				<div class="button f-left" onclick="javascript: setLocation('<?php ShopingCart_UI::href(); ?>');"><span><span>Назад</span></span></div>
 				<button type="submit" title="Далее" class="button">
 					<span><span>Далее</span></span>
 				</button>
@@ -34,14 +86,14 @@
 		</form>
 	</div>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
-        //<![CDATA[
+	//<![CDATA[
 
-        var dataForm = new VarienForm('save-order-form', true);
+	var dataForm = new VarienForm('save-order-form', true);
 
-        //]]>
+	//]]>
 
-    </script>     	
+</script>     	
 
 </div>

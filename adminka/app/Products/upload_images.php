@@ -3,14 +3,7 @@
 	// Инициализация
 
 	require_once "../classes.php";
-
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-
-	require('./request.php');
+	require_once "../request.php";
 
 	$request = new Request(array('restful' => true));
 
@@ -196,12 +189,12 @@ function create_thumb ($square_size, $img_file, $ori_path, $thumb_path, $img_typ
 
 //------------------------------------------------------------------------------
 
-	$ori_dir       = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/original/";
-	$thumb_50_dir  = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/50x50/";
-	$thumb_78_dir  = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/78x78/";
-	$thumb_90_dir  = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/90x90/";
-	$thumb_250_dir = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/250x250/";
-	$thumb_500_dir = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/full/";
+	$ori_dir       = $_SERVER["DOCUMENT_ROOT"] . "/upload/original/";
+	$thumb_50_dir  = $_SERVER["DOCUMENT_ROOT"] . "/upload/50x50/";
+	$thumb_78_dir  = $_SERVER["DOCUMENT_ROOT"] . "/upload/78x78/";
+	$thumb_90_dir  = $_SERVER["DOCUMENT_ROOT"] . "/upload/90x90/";
+	$thumb_250_dir = $_SERVER["DOCUMENT_ROOT"] . "/upload/250x250/";
+	$thumb_500_dir = $_SERVER["DOCUMENT_ROOT"] . "/upload/full/";
 
 	// 
 

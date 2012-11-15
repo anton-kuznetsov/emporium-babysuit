@@ -82,6 +82,7 @@ class Cart_DALC extends DALC {
 
 			$items[$item['id']]['label']         = $product_items[$item['id_product']]['label'];
 			$items[$item['id']]['id_currency']   = $product_items[$item['id_product']]['id_currency'];
+			$items[$item['id']]['weight']        = $product_items[$item['id_product']]['weight'];
 			$items[$item['id']]['price']         = $product_items[$item['id_product']]['price'];
 			$items[$item['id']]['subtotal']      = $items[$item['id']]['price'] * $items[$item['id']]['qty'];
 			$items[$item['id']]['href_image_50'] = $product_items[$item['id_product']]['href_image_50'];

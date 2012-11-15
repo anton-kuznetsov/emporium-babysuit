@@ -46,8 +46,7 @@ class SearchResults_DALC extends DALC {
 			" SELECT " .
 			"    COUNT(*) AS product_qty " .
 			" FROM " .
-			"    products_and_categories " .
-			"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+			"    products " .
 			" WHERE " .
 			"    1 = 1 " .
 			$where .
@@ -89,8 +88,7 @@ class SearchResults_DALC extends DALC {
 			" SELECT " .
 			"    products.* " .
 			" FROM " .
-			"    products_and_categories " .
-			"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+			"    products " .
 			" WHERE " .
 			"    1 = 1 " .
 			$where .

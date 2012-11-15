@@ -52,11 +52,10 @@ class BrandSideMenu_DALC extends DALC {
 				"    , brands.label AS label_brand " .
 				"    , COUNT(*) AS product_qty " .
 				" FROM " .
-				"    products_and_categories " .
-				"    INNER JOIN products ON products.id = products_and_categories.id_product " .
+				"    products " .
 				"    INNER JOIN brands ON brands.id = products.id_brand " .
 				" WHERE " .
-				"    products_and_categories.id_category IN (" . $ids . ") " .
+				"    products.id_category IN (" . $ids . ") " .
 				" GROUP BY " .
 				"    brands.id ",
 				$this->db

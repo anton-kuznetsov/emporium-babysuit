@@ -66,8 +66,8 @@
 		<a class="next"></a>
 		<div class="clearfloat"></div>
 	</div>
-	<div class="actions" id="cart-buttons">
+	<!-- <div class="actions" id="cart-buttons">
 		<span class="button"><a onclick="setLocation('<?php CreateOrder_UI::href( array( 'action' => 'step1' ) ); ?>')">Оформить заказ</a></span>
 		<span class="button f-right"><a onclick="setLocation('<?php ShopingCart_UI::href(); ?>')">Изменить</a></span>
-	</div>
+	</div> -->
 </div>

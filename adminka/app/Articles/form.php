@@ -37,6 +37,8 @@
 
 	$article = $article_dalc->GetArticle($id);
 
+	$article['text'] = str_replace('\"', '"', $article['text']);
+
 	echo json_encode(Array(
 	    "success" => "true",
 	    "total"   => isset( $article ) ? 1 : 0,

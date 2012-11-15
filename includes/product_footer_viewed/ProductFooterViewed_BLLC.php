@@ -22,9 +22,9 @@ class ProductFooterViewed_BLLC {
 
 		// Запрос на получение данных
 
-		$prd_footer_viewed_dalc = new ProductFooterViewed_DALC();
+		$product_footer_viewed_dalc = new ProductFooterViewed_DALC();
 
-		$items = $prd_footer_viewed_dalc->GetItems();
+		$items = $product_footer_viewed_dalc->GetItems();
 
 		return $items;
 

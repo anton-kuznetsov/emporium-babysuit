@@ -36,6 +36,9 @@ tab_info.stores.categories = Ext.create(
 				type: 'json',
 				root: 'items',
 				totalProperty: 'totalCount'
+			},
+			extraParams: {
+				'id_exclude': request_param_id + 0
 			}
 	    },
 
@@ -480,7 +483,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     },
                     {
@@ -489,7 +491,6 @@ tab_seo.form = Ext.create(
 						xtype: 'htmleditor',
 						labelWidth: 150,
                         height: 150,
-                        style: 'background-color: white;',
                         anchor: '100%'
                     }
                 ]

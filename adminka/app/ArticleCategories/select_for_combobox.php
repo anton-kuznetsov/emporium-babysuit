@@ -4,11 +4,7 @@
 
 	require_once "../classes.php";
 
-	$start   = isset($_REQUEST['start'])  ? $_REQUEST['start']  : 0;
-	$limit   = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 25;
-	$sort    = isset($_REQUEST['sort'])   ? $_REQUEST['sort']   : '';
-	$dir     = isset($_REQUEST['dir'])    ? $_REQUEST['dir']    : 'ASC';
-	$filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+	//
 
 	require('./request.php');
 
@@ -16,7 +12,24 @@
 
 	//
 
-	$where = '';
+	$item = Utils::GetRequestParamList (
+		array (
+			array ( 'name' => 'id_exclude', 'type' => 'int' ),
+		),
+		$request
+	); 
+
+	//
+
+	$where = ' 1 = 1 ';
+
+	// id_exclude - идентификатор исключаемый из списка (текущий каталог)
+
+	if ( isset($item) ) {
+
+		$where .= ' AND id <> ' . $item['id_exclude'] . ' ';
+
+	}
 
 	//
 

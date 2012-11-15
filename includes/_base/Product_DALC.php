@@ -50,7 +50,6 @@ class Product_DALC extends DALC {
 
 		}
 
-
 		return $data;
 
 	}
@@ -169,17 +168,24 @@ class Product_DALC extends DALC {
 		// Результат:
 		//     price_str = '10 000.00 руб.' 
 
+		$return_items = array();
+
 		foreach ($products as $product) {
 
-			$format = $currencies[$product['id_currency']]['format'];
-			$price = number_format( $products[$product['id']]['price'], 2, '.', ' ' );
-			$products[$product['id']]['price_str'] = sprintf($format, $price);
+			if ( $product['in_stock'] ) {
 
+				$format = $currencies[$product['id_currency']]['format'];
+				$price = number_format( $products[$product['id']]['price'], 2, '.', ' ' );
+
+				$return_items[$product['id']] = $product;
+				$return_items[$product['id']]['price_str'] = sprintf($format, $price); 
+
+			}
 		}
 
 		//
 
-		return $products;
+		return $return_items;
 
 	}
 
@@ -225,17 +231,24 @@ class Product_DALC extends DALC {
 		// Результат:
 		//     price_str = '10 000.00 руб.' 
 
+		$return_items = array();
+
 		foreach ($products as $product) {
 
-			$format = $currencies[$product['id_currency']]['format'];
-			$price = number_format( $products[$product['id']]['price'], 2, '.', ' ' );
-			$products[$product['id']]['price_str'] = sprintf($format, $price);
+			if ( $product['in_stock'] ) {
 
+				$format = $currencies[$product['id_currency']]['format'];
+				$price = number_format( $products[$product['id']]['price'], 2, '.', ' ' );
+
+				$return_items[$product['id']] = $product;
+				$return_items[$product['id']]['price_str'] = sprintf($format, $price);
+
+			}
 		}
 
 		//
 
-		return $products;
+		return $return_items;
 
 	}
 
