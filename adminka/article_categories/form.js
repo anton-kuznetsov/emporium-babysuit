@@ -36,6 +36,9 @@ tab_info.stores.categories = Ext.create(
 				type: 'json',
 				root: 'items',
 				totalProperty: 'totalCount'
+			},
+			extraParams: {
+				'id_exclude': request_param_id + 0
 			}
 	    },
 

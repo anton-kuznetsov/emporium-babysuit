@@ -3,17 +3,46 @@
 		<h1><span class="color">Оформление заказа</span></h1>
 	</div>
 	<p>
-		Номер заказа: <?php echo $data['id']; ?><br />
-		Дата: <?php echo $data['dt_str']; ?>
+		<table class="hidden-border web2">
+			<col width="100px" />
+			<col />
+			<tbody>
+				<tr>
+					<td>Номер заказа</td>
+					<td><?php echo $data['id']; ?></td>
+				</tr>
+				<tr>
+					<td>Дата</td>
+					<td><?php echo $data['dt_str']; ?></td>
+				</tr>
+			</tbody>
+		</table>
 	</p>
 	<p>
 		<b>Заказчик</b><br />
-		ФИО: <?php echo $data['fio']; ?><br />
-		E-mail: <?php echo $data['email']; ?><br />
-		Телефон: <?php echo $data['phone']; ?>
+		<table class="hidden-border web2">
+			<col width="100px" />
+			<col />
+			<tbody>
+				<tr>
+					<td>ФИО</td>
+					<td><?php echo $data['fio']; ?></td>
+				</tr>
+				<tr>
+					<td>E-mail</td>
+					<td><?php echo $data['email']; ?></td>
+				</tr>
+				<tr>
+					<td>Телефон</td>
+					<td><?php echo $data['phone']; ?></td>
+				</tr>
+			</tbody>
+		</table>
 	</p>	
 
 	<!-- Таблица товаров -->
+
+	<p><b>Состав</b></p>
 	<table id="order-table" class="data-table order-table">
 		<col width="1" />
 		<col />
@@ -32,13 +61,9 @@
 		<tbody>
 
 <?php
-
 	$i = 0;
-
 	foreach ( $data['cart_items'] as $item ) {
-
 		$i++;
-
 ?>
 
 		<tr>
@@ -60,9 +85,7 @@
 		</tr>
 
 <?php
-
 	}
-
 ?>
 
 				</tbody>
@@ -76,16 +99,73 @@
 
 	<br />
 	<p>
-		Сумма заказа: <b><?php echo $data['total_str']; ?></b>
+		<b>Доставка</b><br />
+		<table class="hidden-border web2">
+			<col width="100px" />
+			<col />
+			<tbody>
+				<tr>
+					<td>Способ</td>
+					<td><?php echo $data['shipping_method']['label']; ?></td>
+				</tr>
+				<tr>
+					<td>Адрес</td>
+					<td><?php echo $data['country']['label'] . ', ' . $data['country_region']['label']; ?><br /><?php echo $data['shipping_address']; ?></td>
+				</tr>
+			</tbody>
+		</table>
+	</p>
+	<p>
+		<b>Стоимость</b><br />
+		<table class="hidden-border web2">
+			<col width="100px" />
+			<col />
+			<tfoot>
+				<tr>
+					<td>
+						<strong>Итого</strong>
+					</td>
+					<td style="" class="a-right">
+						<strong><span class="price"><?php echo $data['total_str']; ?></span></strong>
+					</td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Товар</td>
+					<td>
+						<span class="price"><?php echo $data['products_cost_str']; ?></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Доставка</td>
+					<td>
+						<span class="price"><?php echo $data['shipping_cost_str']; ?></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</p>
 	<p>
 		<b>Менеджер по работе с клиентами</b><br />
-		Имя: <?php echo $data['client_manager']['fio']; ?><br />
-		Телефон: <?php echo $data['client_manager']['phone']; ?>
+		<table class="hidden-border web2">
+			<col width="100px" />
+			<col />
+			<tbody>
+				<tr>
+					<td>Имя</td>
+					<td><?php echo $data['client_manager']['fio']; ?></td>
+				</tr>
+				<tr>
+					<td>Телефон</td>
+					<td><?php echo $data['client_manager']['phone']; ?></td>
+				</tr>
+			</tbody>
+		</table>
 	</p>
 
 	<div class="buttons-set">
-		<button class="button f-left" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'back_to_step1', 'fio' => $data['fio'], 'email' => $data['email'], 'phone' => $data['phone'] )); ?>')"><span><span>Назад</span></span></button>
+		<button class="button f-left" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'back_to_step1', 'id_order' => $data['id'] )); ?>')"><span><span>Назад</span></span></button>
 		<button class="button" onclick="setLocation('<?php CreateOrder_UI::href(array( 'action' => 'done', 'id_order' => $data['id'] )); ?>')"><span><span>Подтвердить заказ</span></span></button>
 	</div>
 </div>

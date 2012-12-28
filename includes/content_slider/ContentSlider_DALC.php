@@ -5,7 +5,7 @@ class ContentSlider_DALC extends DALC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	//
+	// Конструктор
 
 	function __construct() {
 

@@ -27,16 +27,6 @@
 
 	$images = array();
 
-	$site_path = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/";
-
-	$dir = $site_path . "upload/original/";
-	$dir_thumbs = $site_path . "upload/250x250/";
-
-	$site_url = "http://localhost/babysuit/";
-
-	$url = $site_url . "upload/original/";
-	$url_thumbs = $site_url . "upload/250x250/";
-
 	if ( isset($product_photos) ) {
 
 		foreach ( $product_photos as $product_photo ) {
@@ -45,8 +35,8 @@
 
 			if (!preg_match('/\.(jpg|gif|png)$/', $name)) continue;
 		
-			$size    = filesize($dir . $name);
-			$lastmod = filemtime($dir . $name) * 1000;
+			$size    = filesize($ORIGINAL_UPLOAD_FOLDER . $name);
+			$lastmod = filemtime($ORIGINAL_UPLOAD_FOLDER . $name) * 1000;
 		
 			array_push (
 				$images,
@@ -55,8 +45,8 @@
 					'name'      => $name,
 					'size'      => $size,
 					'lastmod'   => $lastmod,
-					'url'       => $url . $name,
-					'thumb_url' => $url_thumbs . $name
+					'url'       => $ORIGINAL_UPLOAD_URL . $name,
+					'thumb_url' => $THUMBS_UPLOAD_URL . $name
 				)
 			);
 

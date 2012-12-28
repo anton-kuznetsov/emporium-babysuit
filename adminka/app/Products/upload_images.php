@@ -17,7 +17,6 @@
 		$request
 	);
 
-
 //------------------------------------------------------------------------------
 // $square_size - максимальный размер картинки
 // $thumb_path - путь к каталогу куда сохранить уменьшенное изображение
@@ -183,15 +182,6 @@ function create_thumb ($square_size, $img_file, $ori_path, $thumb_path, $img_typ
 
 //------------------------------------------------------------------------------
 
-	$ori_dir       = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/original/";
-	$thumb_50_dir  = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/50x50/";
-	$thumb_78_dir  = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/78x78/";
-	$thumb_90_dir  = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/90x90/";
-	$thumb_250_dir = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/250x250/";
-	$thumb_500_dir = $_SERVER["DOCUMENT_ROOT"] . "/babysuit/" . "upload/full/";
-
-	// 
-
 	$allowedType = array(
 	    'image/jpeg',
 		'image/png',
@@ -252,49 +242,53 @@ function create_thumb ($square_size, $img_file, $ori_path, $thumb_path, $img_typ
 
 	            move_uploaded_file (
 					$_FILES['image']['tmp_name'],
-					//$ori_dir.$_FILES['image']['name']
-					$ori_dir.$new_image_name
+					$ORIGINAL_UPLOAD_FOLDER . $new_image_name
 				);
 
 				// Создание маленьких картинок
 
+				// 50x50
 	            create_thumb (
 	            	50,
 					$new_image_name,
-	                $ori_dir,
-					$thumb_50_dir,
+	                $ORIGINAL_UPLOAD_FOLDER,
+					$50x50_UPLOAD_FOLDER,
 	                $_FILES['image']['type']
 				);
 
+				// 78x78
 	            create_thumb (
 	            	78,
 					$new_image_name,
-	                $ori_dir,
-					$thumb_78_dir,
+	                $ORIGINAL_UPLOAD_FOLDER,
+					$78x78_UPLOAD_FOLDER,
 	                $_FILES['image']['type']
 				);
 
+				// 90x90
 	            create_thumb (
 	            	90,
 					$new_image_name,
-	                $ori_dir,
-					$thumb_90_dir,
+	                $ORIGINAL_UPLOAD_FOLDER,
+					$90x90_UPLOAD_FOLDER,
 	                $_FILES['image']['type']
 				);
 
+				// 250x250
 	            create_thumb (
 	            	250,
 					$new_image_name,
-	                $ori_dir,
-					$thumb_250_dir,
+	                $ORIGINAL_UPLOAD_FOLDER,
+					$THUMBS_UPLOAD_FOLDER,
 	                $_FILES['image']['type']
 				);
 
+				// 500x500
 	            create_thumb (
 	            	500,
 					$new_image_name,
-	                $ori_dir,
-					$thumb_500_dir,
+	                $ORIGINAL_UPLOAD_FOLDER,
+					$FULL_UPLOAD_FOLDER,
 	                $_FILES['image']['type']
 				);
 

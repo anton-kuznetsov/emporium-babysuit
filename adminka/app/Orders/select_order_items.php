@@ -19,16 +19,6 @@
 
 	//
 
-	$where = '';
-
-	if ( $item['id_order'] ) {
-
-		$where = ' id_order = ' . $item['id_order'];
-
-	}
-
-	//
-
 	$order_dalc = new Order_DALC();
 
 	$order_items = $order_dalc->GetOrderItems( $item['id_order'] );

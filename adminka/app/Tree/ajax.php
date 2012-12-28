@@ -7,8 +7,6 @@
 
 	//
 
-	$sitepath = 'http://localhost/babysuit/adminka/';
-
 	$nodes = array();
 
 	// Список брендов
@@ -32,7 +30,7 @@
 				array (
 					'text'       => $brand['label'],
 					'id'         => $brand['id'],
-					'href_panel' => $sitepath . 'products.php?id_brand=' . $brand['id'],
+					'href_panel' => $ADMINKA_URL . 'products.php?id_brand=' . $brand['id'],
 					'leaf'       => true,
 					'cls'        => 'file'
 				)
@@ -42,7 +40,7 @@
 		$products_for_json = array (
 			'text'       => 'Товары',
 			'id'         => 'products',
-			'href_panel' => $sitepath . 'products.php',
+			'href_panel' => $ADMINKA_URL . 'products.php',
 			'leaf'       => false,
 			'cls'        => 'folder',			
 			'children'   => $brands_for_json
@@ -53,7 +51,7 @@
 		$products_for_json = array (
 			'text'       => 'Товары',
 			'id'         => 'products',
-			'href_panel' => $sitepath . 'products.php',
+			'href_panel' => $ADMINKA_URL . 'products.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		);
@@ -68,14 +66,14 @@
 		array (
 			'text'       => 'Бренды',
 			'id'         => 'brands',
-			'href_panel' => $sitepath . 'brands.php',
+			'href_panel' => $ADMINKA_URL . 'brands.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		),
 		array (
 			'text'       => 'Категории товара',
 			'id'         => 'product_categories',
-			'href_panel' => $sitepath . 'product_categories.php',
+			'href_panel' => $ADMINKA_URL . 'product_categories.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		),
@@ -83,28 +81,28 @@
 		array (
 			'text'       => 'Категории статей',
 			'id'         => 'article_categories',
-			'href_panel' => $sitepath . 'article_categories.php',
+			'href_panel' => $ADMINKA_URL . 'article_categories.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		),
 		array (
 			'text'       => 'Статьи',
 			'id'         => 'articles',
-			'href_panel' => $sitepath . 'articles.php',
+			'href_panel' => $ADMINKA_URL . 'articles.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		),
 		array (
 			'text'       => 'Оформленные заказы',
 			'id'         => 'orders',
-			'href_panel' => $sitepath . 'orders.php',
+			'href_panel' => $ADMINKA_URL . 'orders.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		),
 		array (
 			'text'       => 'Сообщения от пользователей',
 			'id'         => 'send_messages',
-			'href_panel' => $sitepath . 'send_messages.php',
+			'href_panel' => $ADMINKA_URL . 'send_messages.php',
 			'leaf'       => true,
 			'cls'        => 'file'
 		)

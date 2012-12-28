@@ -21,8 +21,11 @@ class CreateOrderPage_UI extends Page_UI {
 		$create_order_page_bllc = new CreateOrderPage_BLLC();
 
 		switch ($this->options['action']) {
-			case 'step1_next':
+			case 'begin_step1':
 				$create_order_page_bllc->NewOrder( $this->options );
+				break;
+			case 'step1_next':
+				$create_order_page_bllc->SetContactsToOrder( $this->options );
 				break;
 			case 'done':
 				$create_order_page_bllc->DoneOrder( $this->options );

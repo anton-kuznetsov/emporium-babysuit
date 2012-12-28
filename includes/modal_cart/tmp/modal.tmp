@@ -3,16 +3,16 @@
 	jQuery(document).ready(function(){
 		jQuery('a.modal, .summary .amount a').rokmagemodal({
 			rokmagemodalcontainer: "#rokmage-header-cart",
-			overlayopacity	   : 0.2,
-			overlayinspeed	   : 300,
-			modalpreposition	 : {"top":"43%"},
-			modalpauseb4entry	: 200,
+			overlayopacity       : 0.2,
+			overlayinspeed       : 300,
+			modalpreposition     : {"top":"43%"},
+			modalpauseb4entry    : 200,
 			modalentryanimation  : {"top": "50%", "opacity": "1"},
-			modalentryspeed	  : 550,
+			modalentryspeed      : 550,
 			modalexitanimation   : {"top": "55%", "opacity": "0"},
-			modalexitspeed	   : 350,
+			modalexitspeed       : 350,
 			pauseb4overlayfadeout: 500,
-			overlayoutspeed	  : 200
+			overlayoutspeed      : 200
 		});
 	});
 
@@ -54,7 +54,7 @@
 				<a href="<?php Product_UI::href(array( 'id_product' => $item['id_product'] )); ?>" class="product-image"><img src="<?php echo $item['href_image_90']; ?>" width="90" height="90" alt="<?php echo $item['label']; ?>" title="<?php echo $item['label']; ?>" /></a>
 				<div class="product-details">
 					<h4><a href="<?php Product_UI::href(array( 'id_product' => $item['id_product'] )); ?>"><?php echo $item['label']; ?></a></h4>
-					<strong><?php echo $item['qty']; ?></strong> x <span class="price"><?php echo $item['price_str']; ?></span>					
+					<strong><?php echo $item['qty']; ?></strong> x <span class="price"><?php echo $item['price_str']; ?></span>
 				</div>
 				<a href="<?php ShopingCart_UI::href(array( 'action' => 'delete', 'id_item' => $item['id'] )); ?>" onclick="return confirm('Вы действительно хотите удалить этот товар из корзины?');" class="modalcart-btn-remove"><img src="<?php echo $site_root; ?>/images/btn_remove.gif" alt="Удалить" title="Удалить" />Удалить из корзины</a>
 			</li>

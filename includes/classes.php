@@ -1,5 +1,7 @@
 <?php
 
+	require_once "Shipping.php";
+
 	require_once "_pages/Page_UI.php";
 	require_once "_pages/HomePage/HomePage_UI.php";
 	require_once "_pages/CategoryPage/CategoryPage_UI.php";
@@ -229,5 +231,12 @@
 	// DALC
 
 	require_once "dalc/global.php";
+
+	// Robocassa
+
+	require_once "fail_payment/FailPayment_BLLC.php";
+	require_once "fail_payment/FailPayment_UI.php";
+	require_once "success_payment/SuccessPayment_BLLC.php";
+	require_once "success_payment/SuccessPayment_UI.php";
 
 ?>

@@ -21,7 +21,7 @@
 
 	$article_dalc = new Article_DALC();
 
-	$article = $article_dalc->GetArticle($id);
+	$article = $article_dalc->GetArticle($item['id']);
 
 	echo json_encode(array(
 	    "success" => "true",

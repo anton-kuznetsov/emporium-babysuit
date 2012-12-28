@@ -1,14 +1,5 @@
-/**
- * @package   Kinetic Template - RocketTheme
- * @version   1.6.0 May 17, 2011
- * @author    RocketTheme http://www.rockettheme.com
- * @copyright Copyright (C) 2007 - 2011 RocketTheme, LLC
- * @license   http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
- */
 /* Core Styles */
 .rt-image {padding: 5px;margin-bottom: 15px;border: 1px solid #ddd;}
-
-
 
 /* Bullet Styles */
 .tab_content ul, ul.bullet-1, ul.bullet-2, ul.bullet-3, ul.bullet-4, ul.bullet-5, ul.bullet-6, ul.bullet-7, ul.bullet-8, ul.bullet-9 {padding: 0 0 0 5px; margin: 0 0 15px;}

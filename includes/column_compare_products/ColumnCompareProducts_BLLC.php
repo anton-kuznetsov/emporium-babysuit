@@ -5,7 +5,7 @@ class ColumnCompareProducts_BLLC {
 	protected $folder_class = '';
 
 	//--------------------------------------------------------------------------
-	//
+	// Конструктор
 
 	function __construct() {
 

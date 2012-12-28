@@ -19,16 +19,6 @@
 
 	//
 
-	$where = '';
-
-	if ( isset($item['id_brand']) ) {
-
-		$where = ' id_brand = ' . $item['id_brand'];
-
-	}
-
-	//
-
 	$brand_dalc = new Brand_DALC();
 
 	$recomended_products = $brand_dalc->GetRecomendedProducts( $item['id_brand'], 0 );

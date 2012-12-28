@@ -4,12 +4,34 @@
 
 	require_once "../var.php";
 	require_once "../classes.php";
+	require_once "../request.php";
+	
+	//
+
+	$request = new Request(array('restful' => true));
+
+	$item = Utils::GetRequestParamList (
+		array (
+			array ( 'name' => 'id_exclude', 'type' => 'int' ),
+		),
+		$request
+	); 
+
+	//
+
+	$where = ' 1 = 1 ';
+
+	// id_exclude - идентификатор исключаемый из списка (текущий каталог)
+
+	if ( isset($item) ) {
+
+		$where .= ' AND id <> ' . $item['id_exclude'] . ' ';
+
+	}
 
 	//
 
 	$article_category_dalc = new ArticleCategory_DALC();
-
-	$where = '';
 
 	$article_categories = $article_category_dalc->GetItemsLimit(
 		array(

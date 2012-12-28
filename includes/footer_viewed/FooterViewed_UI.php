@@ -3,10 +3,8 @@
 class FooterViewed_UI {
 
 	protected $folder_class = '';
-	protected $title        = '<span><span class="color">Заголовок</span></span>';
 
-	//--------------------------------------------------------------------------
-	//
+	protected $title = '<span><span class="color">Заголовок</span></span>';
 
 	function __construct() {
 
@@ -15,9 +13,6 @@ class FooterViewed_UI {
 		$this->folder_class = $folder_root . '/includes/footer_viewed/';
 
 	}
-
-	//--------------------------------------------------------------------------
-	//
 
 	public function render() {
 
